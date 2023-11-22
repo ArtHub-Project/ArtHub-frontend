@@ -1,8 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@100;400;500;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 
 @font-face {
   font-family: 'LINESeedSansBold';
@@ -11,4 +13,18 @@
 @font-face {
   font-family: 'LINESeedSansRegular';
   src: url(/fonts/LINESeedSans_W_Rg.woff2);
+
+
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-image: url('/images/Background.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
 }
