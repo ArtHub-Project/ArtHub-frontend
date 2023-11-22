@@ -1,11 +1,14 @@
 import './App.css'
+import Cart from './Pages/Cart'
 // import Login from './Pages/Login'
-import Register from './Pages/Register'
+// import Register from './Pages/Register'
 
-function App() {
-  ;<div>
-    <Register />
-  </div>
+const App = () => {
+  return (
+    <div>
+      <Cart />
+    </div>
+  )
 }
 
 export default App
