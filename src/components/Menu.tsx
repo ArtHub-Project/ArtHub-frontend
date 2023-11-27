@@ -4,7 +4,7 @@ const Menu = () => {
       <div className="menu lg:menu-horizontal text-xs rounded-box space-x-2">
         <li>
           <a className="bg-slate-50">
-            <img src="src/assets/New In.svg" />
+            <img src="src/assets/NewIn.svg" />
             New in
           </a>
         </li>
@@ -34,13 +34,13 @@ const Menu = () => {
         </li>
         <li>
           <a className="bg-slate-50">
-            <img src="src/assets/Digital Art.svg" />
+            <img src="src/assets/DigitalArt.svg" />
             Digital Art
           </a>
         </li>
         <li>
           <a className="bg-slate-50">
-            <img src="src/assets/Other Media.svg" />
+            <img src="src/assets/OtherMedia.svg" />
             Other
           </a>
         </li>

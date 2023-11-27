@@ -3,8 +3,8 @@ const Register = () => {
     <div className="w-full h-screen flex ">
       <div className="static grid grid-cols-1 md:grid-cols-2 w-[1120px] h-[667px] bg-white rounded-2xl shadow m-auto">
         <div className="w-full h-[537px] hidden md:block ">
-          <img className="absolute ml-4 mt-4 " src="src/assets/ArtHub Logo.svg" alt="" />
-          <img className="rounded-l-2xl" src="src/assets/Register Background.jpg" alt="" />
+          <img className="absolute ml-4 mt-4 " src="src/assets/ArtHubLogo.svg" alt="" />
+          <img className="rounded-l-2xl" src="src/assets/RegisterBackground.jpg" alt="" />
         </div>
         <div className="p-8 flex flex-col justify-normal">
           <form>
@@ -20,7 +20,7 @@ const Register = () => {
                 className="input input-bordered w-full bg-white focus:border-[#CF1CB6]"
               />
             </div>
-            <div className="form-control w-full  mb-4">
+            <div className="form-control w-full mb-4">
               <label className="label">
                 <span className="label-text text-zinc-950 text-sm font-bold ">Username</span>
               </label>

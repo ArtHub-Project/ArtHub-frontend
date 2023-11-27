@@ -4,7 +4,7 @@ const Navbar = () => {
   return (
     <nav className="navbar bg-white p-4 sticky top-0 z-50 shadow m-auto">
       <Link to="/">
-        <img src="src/assets/ArtHub Logo.svg" />
+        <img src="src/assets/ArtHubLogo.svg" />
       </Link>
       <div className="flex-1 text-zinc-600">
         <p className="divider divider-start font-semibold"></p>
@@ -28,19 +28,21 @@ const Navbar = () => {
         </Link>
         <Link to="/register">
           <button className="btn bg-slate-50  hover:bg-fuchsia-100 border-hidden" title="profile/register">
-            <img src="src/assets/Love Chat.svg" />
+            <img src="src/assets/LoveChat.svg" />
           </button>
         </Link>
-        <button className="btn bg-slate-50 hover:bg-fuchsia-100 border-hidden" title="cart">
-          <img src="src/assets/Shopping Cart.svg" />
-        </button>
+        <Link to="/cart">
+          <button className="btn bg-slate-50 hover:bg-fuchsia-100 border-hidden" title="cart">
+            <img src="src/assets/ShoppingCart.svg" />
+          </button>
+        </Link>
         <div className="avatar">
           <div className="w-12 rounded-3xl">
             <img src="src/assets/sunturs/suntur1.jpeg" />
           </div>
         </div>
         <div>
-          <div className="text-sm">
+          <div className="text-primary-50">
             <p>annmalaew</p>
           </div>
           <div className="text-xs">
