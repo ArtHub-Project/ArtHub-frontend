@@ -48,7 +48,7 @@ const Menu = () => {
       <div className="menu lg:menu-horizontal text-xs rounded-box space-x-2">
         <li>
           <a className="bg-slate-50">
-            <img src="src/assets/Buy:Bid.svg" />
+            <img src="src/assets/BuyBid.svg" />
             Buy/Bid
           </a>
         </li>
