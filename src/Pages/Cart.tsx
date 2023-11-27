@@ -1,13 +1,11 @@
-
-import CartList from '../Components/CartList'
-import arthubLogo from '/public/images/arthubLogo.svg'
+import CartList from '../components/CartList'
 
 const Cart = () => {
   return (
     <div className="w-full h-screen inline-flex items-center m-auto justify-center">
       <div className="place-items-center ">
         <div className="w-[736px] inline-flex gap-7 my-4 item-end">
-          <img className="mr-2 w-[166.80px]" src={arthubLogo} alt="" />
+          <img className="mr-2 w-[166.80px]" src="src/assets/ArtHubLogo.svg" alt="" />
           <h2 className="text-[32px] font-bold">Cart</h2>
         </div>
         <div className="p-6 bg-white rounded-2xl shadow w-[736px] h-auto ">
@@ -55,7 +53,6 @@ const Cart = () => {
       </div>
     </div>
   )
-
 }
 
 export default Cart

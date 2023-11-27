@@ -1,12 +1,12 @@
-import arthubLogo from '/public/images/arthubLogo.svg'
 import CardSet from '../assets/CardSet.svg'
-import CartRight from '../Components/CartRight'
+import CartRight from '../components/CartRight'
+
 const Checkout = () => {
   return (
     <div className="container mx-30 pt-6  m-auto flex-col flex">
       {/* Heading */}
       <div className="max-w-max inline-flex gap-7 my-4 item-end justify-start ">
-        <img className="mr-2 w-auto" src={arthubLogo} alt="" />
+        <img className="mr-2 w-auto" src="src/assets/ArtHubLogo.svg" alt="" />
         <h2 className="text-2xl font-bold">Chektout</h2>
       </div>
       {/* input */}
