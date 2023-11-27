@@ -1,7 +1,7 @@
+import { AllProducts } from '../components/AllProducts'
 import Banner from '../components/Banner'
 import Menu from '../components/Menu'
 import Navbar from '../components/Navbar'
-import ProductList from '../components/ProductList'
 
 const Home = () => {
   return (
@@ -9,7 +9,7 @@ const Home = () => {
       <Navbar />
       <Menu />
       <Banner />
-      <ProductList />
+      <AllProducts />
     </div>
   )
 }
