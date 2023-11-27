@@ -1,6 +1,7 @@
 import { ReactNode, createContext, useContext, useEffect, useState } from 'react'
 import { CredentialDTO, LoginDTO, RegisterDTO } from '../types/dto'
 import axios, { AxiosError } from 'axios'
+import { API_HOST } from '../const'
 interface IAuthProviderProps {
   children: ReactNode
 }
@@ -28,7 +29,7 @@ const user = localStorage.getItem('username')
 const checkLoginStatus = async (token: string | null): Promise<boolean> => {
   if (typeof token !== 'string') return false
   try {
-    const currentUser = await axios.get('http://localhost:8080/auth/me', {
+    const currentUser = await axios.get(`${API_HOST}/auth/me`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -55,7 +56,7 @@ const AuthProvider = ({ children }: IAuthProviderProps) => {
     const loginBody: LoginDTO = { username, password }
 
     try {
-      const res = await axios.post<CredentialDTO>('http://localhost:8080/auth/login', loginBody, {
+      const res = await axios.post<CredentialDTO>(`${API_HOST}/auth/login`, loginBody, {
         headers: { 'Content-Type': 'application/json' },
       })
 
@@ -76,7 +77,7 @@ const AuthProvider = ({ children }: IAuthProviderProps) => {
     }
 
     try {
-      await axios.post<RegisterDTO>('http://localhost:8080/user', newUser, {
+      await axios.post<RegisterDTO>(`${API_HOST}/user`, newUser, {
         headers: {
           'Content-Type': 'application/json',
         },
