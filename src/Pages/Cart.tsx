@@ -26,9 +26,9 @@ const Cart = () => {
               <p className="font-bold font text-[14px] text-zinc-950">Clear all</p>
             </div>
             <div>
-              {/* <CartList />
+              <CartList />
               <hr className="my-4 opacity-20 border border-zinc-400" />
-              <CartList /> */}
+              <CartList />
             </div>
             {/* Subtotal */}
             <div className=" mt-8 p-4 m-auto w-full bg-slate-50 rounded-lg border ">
