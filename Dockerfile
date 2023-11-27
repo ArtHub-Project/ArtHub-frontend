@@ -31,7 +31,7 @@ RUN --mount=type=cache,target=/root/.local/share/pnpm/store \
 
 COPY . .
 
-RUN pnpm build
+RUN ls -al && pnpm build
 
 # Use nginx as a service image
 FROM nginx:latest
