@@ -1,10 +1,8 @@
-import React from 'react'
 import cartImage1 from '../assets/cartImage1.jpg'
 
 const CartRight = () => {
   return (
     <>
-      {' '}
       <div className="p-6 bg-white rounded-t-2xl shadow space-y-4 ">
         <div className="inline-flex items-center justify-between m-auto w-full">
           <h3 className="text-[24px] font-bold mb-2">Your Cart</h3>
