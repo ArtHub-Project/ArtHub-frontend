@@ -1,4 +1,4 @@
-// import React from 'react'
+
 import CartList from '../Components/CartList'
 import arthubLogo from '/public/images/arthubLogo.svg'
 
@@ -55,6 +55,7 @@ const Cart = () => {
       </div>
     </div>
   )
+
 }
 
 export default Cart
