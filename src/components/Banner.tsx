@@ -2,9 +2,7 @@ const Banner = () => {
   return (
     <div className="w-[1072px] h-[187px] mx-auto bg-fuchsia-100 rounded-2xl my-20 p-4">
       <div className="flex mb-6 static ">
-        <img src="src/assets/ArtHub Logo.png" alt="arthub" className="h-7 pr-2" />
-        <p className="text-zinc-600 text-lg font-thin font-InterExtraLight tracking-[4.80px]">ART</p>
-        <p className="text-zinc-950 text-lg font-extrabold font-InterSemiBold tracking-[4.80px]">HUB</p>
+        <img src="src/assets/ArtHub Logo.svg" />
         <div>
           <img className="absolute right-[350px] top-[325px]" src="src/assets/Explode Shape.svg" />
           <img className="absolute right-[430px] top-[230px]" src="src/assets/Star Abstract Shape1.svg" />

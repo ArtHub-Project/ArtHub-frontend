@@ -5,7 +5,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 @font-face {
   font-family: 'LINESeedSansBold';
   src: url(/fonts/LINESeedSans_W_Bd.woff2);
@@ -13,8 +12,7 @@
 @font-face {
   font-family: 'LINESeedSansRegular';
   src: url(/fonts/LINESeedSans_W_Rg.woff2);
-
-
+}
 
 * {
   margin: 0;
@@ -22,9 +20,8 @@
 }
 
 body {
-  background-image: url('/images/Background.jpg');
+  background-image: url('src/assets/Background.jpg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-
 }
