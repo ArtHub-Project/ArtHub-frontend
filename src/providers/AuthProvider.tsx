@@ -10,7 +10,8 @@ interface IAuthContextType {
   isLoggedIn: boolean
   username: string | null
   login: (username: string, password: string) => Promise<void>
-  registerUser: (newUsername: string, newPassword: string, newName: string) => Promise<void>
+  register: (newUsername: string, newPassword: string, newName: string) => Promise<void>
+  logout: () => void
 }
 
 const AuthContext = createContext<IAuthContextType | null>(null)
@@ -69,7 +70,7 @@ const AuthProvider = ({ children }: IAuthProviderProps) => {
     }
   }
 
-  const registerUser = async (newUsername: string, newPassword: string, newName: string) => {
+  const register = async (newUsername: string, newPassword: string, newName: string) => {
     const newUser: RegisterDTO = {
       username: newUsername,
       password: newPassword,
@@ -87,7 +88,16 @@ const AuthProvider = ({ children }: IAuthProviderProps) => {
     }
   }
 
-  return <AuthContext.Provider value={{ isLoggedIn, username, login, registerUser }}>{children}</AuthContext.Provider>
+  const logout = () => {
+    localStorage.removeItem('token')
+    localStorage.removeItem('username')
+    setIsLoggedin(false)
+    setUsername(null)
+  }
+
+  return (
+    <AuthContext.Provider value={{ isLoggedIn, username, login, register, logout }}>{children}</AuthContext.Provider>
+  )
 }
 
 export default AuthProvider

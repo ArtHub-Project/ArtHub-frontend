@@ -1,6 +1,9 @@
 import { Link } from 'react-router-dom'
+import { useAuth } from '../providers/AuthProvider'
 
 const Navbar = () => {
+  const { isLoggedIn, logout } = useAuth()
+
   return (
     <nav className="navbar bg-white p-4 sticky top-0 z-50 shadow m-auto">
       <Link to="/">
@@ -36,17 +39,25 @@ const Navbar = () => {
             <img src="src/assets/ShoppingCart.svg" />
           </button>
         </Link>
+        {isLoggedIn ? (
+          <div>
+            <button onClick={logout} className="btn bg-slate-50 hover:bg-fuchsia-100 border-hidden" title="cart">
+              Logout
+            </button>
+          </div>
+        ) : (
+          <div>
+            <div className="text-primary-50">
+              <p>annmalaew</p>
+            </div>
+            <div className="text-xs">
+              <p>@annmalaew</p>
+            </div>
+          </div>
+        )}
         <div className="avatar">
           <div className="w-12 rounded-3xl">
             <img src="src/assets/sunturs/suntur1.jpeg" />
-          </div>
-        </div>
-        <div>
-          <div className="text-primary-50">
-            <p>annmalaew</p>
-          </div>
-          <div className="text-xs">
-            <p>@annmalaew</p>
           </div>
         </div>
       </div>

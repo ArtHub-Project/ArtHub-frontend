@@ -8,6 +8,7 @@ import Cart from './pages/Cart'
 import Checkout from './pages/Checkout'
 import { useAuth } from './providers/AuthProvider'
 import GuardedRoute from './guard/GuardedRoute'
+import Create from './pages/Create'
 
 function App() {
   const { isLoggedIn } = useAuth()
@@ -18,6 +19,7 @@ function App() {
       <Route element={<GuardedRoute isRouteAccessible={!isLoggedIn} redirectRoute="/" />}>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/create" element={<Create />} />
       </Route>
       <Route element={<GuardedRoute isRouteAccessible={isLoggedIn} redirectRoute="/" />}>
         <Route path="/product" element={<Product />} />

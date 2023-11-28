@@ -3,7 +3,7 @@ import { useAuth } from '../providers/AuthProvider'
 import { NavLink, useNavigate } from 'react-router-dom'
 
 const Register = () => {
-  const { registerUser } = useAuth()
+  const { register } = useAuth()
   const navigate = useNavigate()
   const [newUsername, setNewUsername] = useState<string>('')
   const [newPassword, setNewPassword] = useState<string>('')
@@ -13,7 +13,7 @@ const Register = () => {
     e.preventDefault()
 
     try {
-      await registerUser(newUsername, newPassword, newName)
+      await register(newUsername, newPassword, newName)
 
       navigate('/login')
     } catch (err) {
@@ -62,7 +62,7 @@ const Register = () => {
 
             <div className="form-control w-full ">
               <label htmlFor="password" className="label">
-                <span className="label-password text-zinc-950 text-sm font-bold ">Confirm Password</span>
+                <span className="label-password text-zinc-950 text-sm font-bold ">Password</span>
               </label>
               <input
                 id="password"
