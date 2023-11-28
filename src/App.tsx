@@ -1,12 +1,14 @@
 import './App.css'
+import Checkout from './Pages/Checkout'
 // import Cart from './Pages/Cart'
 // import Login from './Pages/Login'
 // import Register from './Pages/Register'
-import Checkout from './Pages/Checkout'
+import CreateArt from './Pages/CreateArt'
+
 const App = () => {
   return (
     <div>
-      <Checkout />
+      <CreateArt />
     </div>
   )
 }
