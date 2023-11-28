@@ -9,7 +9,7 @@ const Cart = () => {
           <div className="flex items-center gap-7 my-4 item-end">
             <div>
               <Link to="/" className="w-1/2">
-                <img src="src/assets/ArtHubLogo.svg" />
+                <img src="/images/ArtHubLogo.svg" />
               </Link>
             </div>
             <div className="w-5/6">

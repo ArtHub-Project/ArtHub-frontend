@@ -1,4 +1,3 @@
-import CardSet from '../assets/CardSet.svg'
 import CartRight from '../components/CartRight'
 
 const Checkout = () => {
@@ -6,7 +5,7 @@ const Checkout = () => {
     <div className="container mx-30 pt-6  m-auto flex-col flex">
       {/* Heading */}
       <div className="max-w-max inline-flex gap-7 my-4 item-end justify-start ">
-        <img className="mr-2 w-auto" src="src/assets/ArtHubLogo.svg" alt="" />
+        <img className="mr-2 w-auto" src="/images/ArtHubLogo.svg" alt="" />
         <h2 className="text-2xl font-bold">Chektout</h2>
       </div>
       {/* input */}
@@ -380,7 +379,7 @@ const Checkout = () => {
             </div>
             <div className="flex gap-8 pt-4">
               <h3 className="font-bold">We accept</h3>
-              <img src={CardSet} alt="" />
+              <img src="/images/CardSet.svg" alt="" />
             </div>
           </div>
           <button className=" btn btn-block mb-4  bg-[#CF1CB6] text-white bg-primary-50 border-primary-50 hover:bg-primary-80 hover:border-primary-80">

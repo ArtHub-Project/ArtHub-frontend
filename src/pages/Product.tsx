@@ -41,12 +41,12 @@ const Product = () => {
                   <div className="flex pt-6">
                     <div className="pr-4">
                       <button className="btn btn-neutral" title="favorite">
-                        <img src="src/assets/Favorite Icon.svg" className="w-4 h-4" />
+                        <img src="/images/Favorite Icon.svg" className="w-4 h-4" />
                       </button>
                     </div>
                     <div>
                       <button className="btn btn-neutral" title="share">
-                        <img src="src/assets/Share Icon.svg" className="w-4 h-4" />
+                        <img src="/images/Share Icon.svg" className="w-4 h-4" />
                       </button>
                     </div>
                   </div>
@@ -54,13 +54,13 @@ const Product = () => {
 
                 <div className="avatar flex justify-between">
                   <div className="w-10 rounded-full">
-                    <img src="src/assets/Mockup4.jpg" />
+                    <img src="/images/Mockup4.jpg" />
                   </div>
                   <div className="w-10 rounded-full">
-                    <img src="src/assets/Mockup4.jpg" />
+                    <img src="/images/Mockup4.jpg" />
                   </div>
                   <div className="w-10 rounded-full">
-                    <img src="src/assets/Mockup4.jpg" />
+                    <img src="/images/Mockup4.jpg" />
                   </div>
                 </div>
                 <div className="divider"></div>
