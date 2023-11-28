@@ -1,6 +1,7 @@
 import { NavLink, useNavigate } from 'react-router-dom'
 import { FormEvent, useState } from 'react'
 import { useAuth } from '../providers/AuthProvider'
+import toast from 'react-hot-toast'
 
 const Login = () => {
   const { login } = useAuth()
@@ -13,10 +14,10 @@ const Login = () => {
 
     try {
       await login(username, password)
-
+      toast.success('Logged In Successfully !')
       navigate('/')
     } catch (err) {
-      console.log(err)
+      if (err instanceof Error) toast.error(err.message)
     }
   }
 
