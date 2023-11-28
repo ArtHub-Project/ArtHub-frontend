@@ -27,8 +27,8 @@ const Login = () => {
       <div className="w-full h-screen flex " onSubmit={handleSubmit}>
         <div className="static grid grid-cols-1 md:grid-cols-2 w-[1120px] h-[537px] bg-white rounded-2xl shadow m-auto">
           <div className="w-full h-[537px] hidden md:block ">
-            <img className="absolute ml-4 mt-4 " src="src/assets/ArtHubLogo.svg" alt="" />
-            <img className="rounded-l-2xl" src="src/assets/LoginBackground.jpg" alt="" />
+            <img className="absolute ml-4 mt-4 " src="/images/ArtHubLogo.svg" alt="" />
+            <img className="rounded-l-2xl" src="/images/LoginBackground.jpg" alt="" />
           </div>
           <div className="p-12 flex flex-col justify-normal">
             <form>

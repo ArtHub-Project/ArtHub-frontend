@@ -4,43 +4,43 @@ const Menu = () => {
       <div className="menu lg:menu-horizontal text-xs rounded-box space-x-2">
         <li>
           <a className="bg-slate-50">
-            <img src="src/assets/NewIn.svg" />
+            <img src="/images/NewIn.svg" />
             New in
           </a>
         </li>
         <li>
           <a className="bg-slate-50">
-            <img src="src/assets/Painting.svg" />
+            <img src="/images/Painting.svg" />
             Painting
           </a>
         </li>
         <li>
           <a className="bg-slate-50">
-            <img src="src/assets/Drawing.svg" />
+            <img src="/images/Drawing.svg" />
             Drawing
           </a>
         </li>
         <li>
           <a className="bg-slate-50">
-            <img src="src/assets/Photography.svg" />
+            <img src="/images/Photography.svg" />
             Photography
           </a>
         </li>
         <li>
           <a className="bg-slate-50">
-            <img src="src/assets/Sculpture.svg" />
+            <img src="/images/Sculpture.svg" />
             Sculpture
           </a>
         </li>
         <li>
           <a className="bg-slate-50">
-            <img src="src/assets/DigitalArt.svg" />
+            <img src="/images/DigitalArt.svg" />
             Digital Art
           </a>
         </li>
         <li>
           <a className="bg-slate-50">
-            <img src="src/assets/OtherMedia.svg" />
+            <img src="/images/OtherMedia.svg" />
             Other
           </a>
         </li>
@@ -48,13 +48,13 @@ const Menu = () => {
       <div className="menu lg:menu-horizontal text-xs rounded-box space-x-2">
         <li>
           <a className="bg-slate-50">
-            <img src="src/assets/BuyBid.svg" />
+            <img src="/images/BuyBid.svg" />
             Buy/Bid
           </a>
         </li>
         <li>
           <a className="bg-slate-50">
-            <img src="src/assets/Auction.svg" />
+            <img src="/images/Auction.svg" />
             Auction
           </a>
         </li>

@@ -7,7 +7,7 @@ const Create = () => {
       <div className="w-full inline-flex items-center m-auto justify-center">
         <div className="place-items-center ">
           <div className="w-[736px] inline-flex gap-7 my-4 item-end">
-            <img className="mr-2 w-[166.80px]" src="src/assets/ArtHubLogo.svg" alt="" />
+            <img className="mr-2 w-[166.80px]" src="/images/ArtHubLogo.svg" alt="" />
             <h2 className="text-[32px] font-bold">Create Art to Sell</h2>
           </div>
           <div className="p-6 bg-white rounded-2xl shadow w-[736px] h-auto ">

@@ -2,7 +2,7 @@ const CartList = () => {
   return (
     <div className="justify-between w-full m-auto items-start inline-flex">
       <div>
-        <img className="rounded-lg" src="src/assets/CartImage1.jpg" alt="" />
+        <img className="rounded-lg" src="/images/CartImage1.jpg" alt="" />
       </div>
       <div>
         <h2 className="w-[229px] text-zinc-950 text-base font-[16px] mb-2">
