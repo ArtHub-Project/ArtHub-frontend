@@ -1,5 +1,4 @@
 import { FormEvent, useState } from 'react'
-import Navbar from '../components/Navbar'
 import useCreate from '../hooks/useCreate'
 import { useNavigate } from 'react-router-dom'
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage'
@@ -39,7 +38,6 @@ const Create = () => {
 
   return (
     <div>
-      <Navbar />
       <form className="w-full inline-flex items-center m-auto justify-center" onSubmit={hendleSubmit}>
         <div className="place-items-center ">
           <div className="w-[736px] inline-flex gap-7 my-4 item-end">

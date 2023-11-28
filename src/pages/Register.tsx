@@ -82,7 +82,7 @@ const Register = () => {
             </div>
             <div className="form-control w-full ">
               <label className="label">
-                <span className="label-password text-zinc-950 text-sm font-bold ">Password</span>
+                <span className="label-password text-zinc-950 text-sm font-bold ">Confirm Password</span>
               </label>
               <input
                 type="password"
