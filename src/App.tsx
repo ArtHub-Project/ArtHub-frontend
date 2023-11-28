@@ -16,10 +16,10 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
+      <Route path="/create" element={<Create />} />
       <Route element={<GuardedRoute isRouteAccessible={!isLoggedIn} redirectRoute="/" />}>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/create" element={<Create />} />
       </Route>
       <Route element={<GuardedRoute isRouteAccessible={isLoggedIn} redirectRoute="/" />}>
         <Route path="/product" element={<Product />} />

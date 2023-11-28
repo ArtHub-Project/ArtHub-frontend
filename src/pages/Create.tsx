@@ -1,10 +1,46 @@
+import { FormEvent, useState } from 'react'
 import Navbar from '../components/Navbar'
+import useCreate from '../hooks/useCreate'
+import { useNavigate } from 'react-router-dom'
+import { getDownloadURL, ref, uploadBytes } from 'firebase/storage'
+import { storage } from '../firebase/App'
 
 const Create = () => {
+  const navigate = useNavigate()
+  const { createProduct } = useCreate()
+  const [name, setName] = useState<string>('')
+  const [description, setDescription] = useState<string>('')
+  const [price, setPrice] = useState<number>(0)
+  const [type, setType] = useState<string>('')
+  const [collection, setCollection] = useState<string>('')
+
+  const [imageUpload, setImageUpload] = useState<File>()
+
+  const hendleSubmit = async (e: FormEvent) => {
+    e.preventDefault()
+    if (imageUpload === null || imageUpload === undefined) throw Error
+
+    try {
+      const imageRef = ref(storage, `images/${imageUpload.name}`)
+
+      await uploadBytes(imageRef, imageUpload).then(async () => {
+        await getDownloadURL(imageRef).then(async (url) => {
+          const imageUrl = url
+          console.log(imageUrl)
+          createProduct(name, imageUrl, description, price, type, collection),
+            console.log(name, imageUrl, description, price, type, collection)
+          navigate('/')
+        })
+      })
+    } catch (err) {
+      console.error(err)
+    }
+  }
+
   return (
     <div>
       <Navbar />
-      <div className="w-full inline-flex items-center m-auto justify-center">
+      <form className="w-full inline-flex items-center m-auto justify-center" onSubmit={hendleSubmit}>
         <div className="place-items-center ">
           <div className="w-[736px] inline-flex gap-7 my-4 item-end">
             <img className="mr-2 w-[166.80px]" src="/images/ArtHubLogo.svg" alt="" />
@@ -25,6 +61,8 @@ const Create = () => {
                 type="text"
                 placeholder=""
                 className="input input-bordered w-full bg-white focus:border-primary-50"
+                onChange={(e) => setName(e.target.value)}
+                required
               />
             </div>
             <div className="form-control w-full mb-4 flex flex-row space-x-8 items-end">
@@ -38,6 +76,8 @@ const Create = () => {
                   type="text"
                   placeholder="Please Select "
                   className="input input-bordered w-full bg-white focus:border-primary-50"
+                  onChange={(e) => setType(e.target.value)}
+                  required
                 />
               </div>
               <div className="w-2/4">
@@ -50,6 +90,8 @@ const Create = () => {
                   type="text"
                   placeholder="Option"
                   className="input input-bordered w-full bg-white focus:border-primary-50"
+                  onChange={(e) => setCollection(e.target.value)}
+                  required
                 />
               </div>
             </div>
@@ -89,19 +131,31 @@ const Create = () => {
                 </span>
               </label>
               <input
-                type="text"
+                type="number"
                 placeholder=""
                 className="input input-bordered w-full bg-white focus:border-primary-50"
+                onChange={(e) => setPrice(e.target.valueAsNumber)}
+                required
               />
             </div>
             <div className="form-control w-full mb-4">
               <label className="text-sm font-bold">Feature Image</label>
-              <input type="file" className="file-input file-input-bordered mt-1 mb-4" />
+              <input
+                type="file"
+                className="file-input file-input-bordered mt-1 mb-4"
+                onChange={(e) => setImageUpload(e.target.files?.[0])}
+                required
+              />
               <p>* Recommend size 4:7 - 256 H * 373 W in Pixel</p>
             </div>
             <div className="form-control w-full mb-4">
               <label className="text-sm font-bold">Description</label>
-              <textarea className="textarea textarea-bordered" placeholder="Tell more about your art"></textarea>
+              <textarea
+                className="textarea textarea-bordered"
+                placeholder="Tell more about your art"
+                onChange={(e) => setDescription(e.target.value)}
+                required
+              ></textarea>
             </div>
             <div className=" inline-flex gap form-control  mb-4  flex-row space-x-4 items-start">
               <input type="checkbox" className="space-x-1 h-5 w-5 input-bordered w-ful bg-white" />
@@ -113,11 +167,14 @@ const Create = () => {
             </div>
           </div>
 
-          <button className=" btn btn-block my-4  bg-[#CF1CB6] text-white bg-primary-50 border-primary-50 hover:bg-primary-80 hover:border-primary-80">
+          <button
+            type="submit"
+            className=" btn btn-block my-4  bg-[#CF1CB6] text-white bg-primary-50 border-primary-50 hover:bg-primary-80 hover:border-primary-80"
+          >
             Create art sell
           </button>
         </div>
-      </div>
+      </form>
     </div>
   )
 }

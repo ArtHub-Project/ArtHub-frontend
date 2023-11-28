@@ -47,3 +47,12 @@ export interface RegisterDTO {
   username: string
   password: string
 }
+
+export interface CreateProductDTO {
+  name: string
+  imageUrl: string
+  description: string
+  price: number
+  type: string
+  collection: string
+}
