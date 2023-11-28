@@ -9,24 +9,30 @@ import Checkout from './pages/Checkout'
 import { useAuth } from './providers/AuthProvider'
 import GuardedRoute from './guard/GuardedRoute'
 import Create from './pages/Create'
+import Navbar from './components/Navbar'
+import { Toaster } from 'react-hot-toast'
 
 function App() {
   const { isLoggedIn } = useAuth()
 
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route element={<GuardedRoute isRouteAccessible={!isLoggedIn} redirectRoute="/" />}>
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/create" element={<Create />} />
-      </Route>
-      <Route element={<GuardedRoute isRouteAccessible={isLoggedIn} redirectRoute="/" />}>
-        <Route path="/product" element={<Product />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/checkout" element={<Checkout />} />
-      </Route>
-    </Routes>
+    <>
+      <Navbar />
+      <Toaster position="top-center" />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route element={<GuardedRoute isRouteAccessible={!isLoggedIn} redirectRoute="/" />}>
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/create" element={<Create />} />
+        </Route>
+        <Route element={<GuardedRoute isRouteAccessible={isLoggedIn} redirectRoute="/" />}>
+          <Route path="/product" element={<Product />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/checkout" element={<Checkout />} />
+        </Route>
+      </Routes>
+    </>
   )
 }
 

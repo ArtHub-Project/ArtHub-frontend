@@ -1,6 +1,7 @@
 import { FormEvent, useState } from 'react'
 import { useAuth } from '../providers/AuthProvider'
 import { NavLink, useNavigate } from 'react-router-dom'
+import toast from 'react-hot-toast'
 
 const Register = () => {
   const { register } = useAuth()
@@ -14,10 +15,11 @@ const Register = () => {
 
     try {
       await register(newUsername, newPassword, newName)
+      toast.success('Registered Successfully!')
 
       navigate('/login')
     } catch (err) {
-      console.error(err)
+      if (err instanceof Error) toast.error(err.message)
     }
   }
   return (
