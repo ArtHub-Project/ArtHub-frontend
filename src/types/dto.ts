@@ -40,9 +40,7 @@ export interface ProductDTO {
   postedBy: UserDTO
 }
 
-export interface ProductsDTO {
-  data: ProductDTO[]
-}
+export type ProductsDTO = ProductDTO[]
 
 export interface RegisterDTO {
   name: string
