@@ -1,8 +1,14 @@
 import { Link } from 'react-router-dom'
 import { useAuth } from '../providers/AuthProvider'
+import toast from 'react-hot-toast'
 
 const Navbar = () => {
   const { isLoggedIn, logout } = useAuth()
+
+  const handleSubmit = () => {
+    logout()
+    toast.success('Logout Success')
+  }
 
   return (
     <nav className="navbar bg-white p-4 sticky top-0 z-50 shadow m-auto">
@@ -24,7 +30,7 @@ const Navbar = () => {
         <div className="absolute top-0 bottom-0 left-0"></div>
       </div>
       <div className="space-x-4">
-        {!isLoggedIn ? (
+        {isLoggedIn ? (
           <div className="flex space-x-4">
             <Link to="/cart">
               <button className="btn bg-slate-50 hover:bg-fuchsia-100 border-hidden text-zinc-600" title="cart">
@@ -34,7 +40,7 @@ const Navbar = () => {
             </Link>
             <div>
               <button
-                onClick={logout}
+                onClick={handleSubmit}
                 className="btn bg-slate-50 hover:bg-fuchsia-100 border-hidden text-zinc-600"
                 title="cart"
               >
