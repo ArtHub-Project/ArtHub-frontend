@@ -8,12 +8,17 @@ const Register = () => {
   const navigate = useNavigate()
   const [newUsername, setNewUsername] = useState<string>('')
   const [newPassword, setNewPassword] = useState<string>('')
+  const [confirmPassword, setConfirmPassword] = useState<string>('')
   const [newName, setNewName] = useState<string>('')
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
 
     try {
+      if (newPassword !== confirmPassword) {
+        toast.error('Password not match!!')
+      }
+
       await register(newUsername, newPassword, newName)
       toast.success('Registered Successfully!')
 
@@ -39,7 +44,7 @@ const Register = () => {
               </label>
               <input
                 type="text"
-                placeholder="Input FirstName and LastName Please"
+                placeholder="Fisrtname Lastname"
                 className="input input-bordered w-full bg-white focus:border-[#CF1CB6]"
                 onChange={(e) => {
                   setNewName(e.target.value)
@@ -53,7 +58,7 @@ const Register = () => {
               </label>
               <input
                 type="text"
-                placeholder="Input Username Please"
+                placeholder="Username"
                 className="input input-bordered w-full bg-white focus:border-[#CF1CB6]"
                 onChange={(e) => {
                   setNewUsername(e.target.value)
@@ -61,19 +66,32 @@ const Register = () => {
                 required
               />
             </div>
-
             <div className="form-control w-full ">
-              <label htmlFor="password" className="label">
+              <label className="label">
                 <span className="label-password text-zinc-950 text-sm font-bold ">Password</span>
               </label>
               <input
-                id="password"
                 type="password"
-                placeholder="Input Password Please"
+                placeholder="************"
                 className="input input-bordered w-full bg-white focus:border-[#CF1CB6]"
                 onChange={(e) => {
                   setNewPassword(e.target.value)
                 }}
+                required
+              />
+            </div>
+            <div className="form-control w-full ">
+              <label className="label">
+                <span className="label-password text-zinc-950 text-sm font-bold ">Password</span>
+              </label>
+              <input
+                type="password"
+                placeholder="************"
+                className="input input-bordered w-full bg-white focus:border-[#CF1CB6]"
+                onChange={(e) => {
+                  setConfirmPassword(e.target.value)
+                }}
+                required
               />
             </div>
             <button className=" my-6  btn btn-block mb-  text-white bg-[#CF1CB6] border-[#CF1CB6] hover:bg-[#A3068D] hover:border-[#A3068D]">
