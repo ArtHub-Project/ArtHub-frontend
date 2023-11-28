@@ -1,5 +1,4 @@
 import { useParams } from 'react-router-dom'
-import Navbar from '../components/Navbar'
 import usePost from '../hooks/usePost'
 
 const Product = () => {
@@ -10,7 +9,6 @@ const Product = () => {
 
   return (
     <>
-      <Navbar />
       <div className="font-medium p-4 text-sm breadcrumbs">
         <ul>
           <li>
