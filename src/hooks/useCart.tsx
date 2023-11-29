@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { API_HOST } from '../const'
 import { CartDTO, CartItemDTO, ICartItemDTO } from '../types/dto'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 interface Total {
   total: number
@@ -9,19 +9,22 @@ interface Total {
 
 const useCart = () => {
   const [cart, setCart] = useState<CartDTO | null>(null)
-  const useGetCart = async () => {
-    const token = localStorage.getItem('token')
 
-    try {
-      const res = await axios.get<CartDTO>(`${API_HOST}/cart`, {
-        headers: { Authorization: `Bearer ${token}` },
-      })
-      return setCart(res.data)
-    } catch (err) {
-      console.error(err)
-    } finally {
+  useEffect(() => {
+    const useGetCart = async () => {
+      const token = localStorage.getItem('token')
+      try {
+        const res = await axios.get<CartDTO>(`${API_HOST}/cart`, {
+          headers: { Authorization: `Bearer ${token}` },
+        })
+        setCart(res.data)
+      } catch (err) {
+        console.error(err)
+      } finally {
+      }
     }
-  }
+    useGetCart()
+  }, [])
 
   const fetchCart = async (total: number) => {
     const token = localStorage.getItem('token')
@@ -51,7 +54,7 @@ const useCart = () => {
     }
   }
 
-  return { useGetCart, useCartItem, cart, fetchCart }
+  return { useCartItem, cart, fetchCart }
 }
 
 export default useCart
