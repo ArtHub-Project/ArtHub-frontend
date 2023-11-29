@@ -15,8 +15,13 @@ const Register = () => {
     e.preventDefault()
 
     try {
+      if (newPassword.length < 5 || newUsername.length < 5) {
+        toast.error('Username or Password too short!!')
+        return
+      }
       if (newPassword !== confirmPassword) {
         toast.error('Password not match!!')
+        return
       }
 
       await register(newUsername, newPassword, newName)

@@ -2,12 +2,15 @@ import { NavLink, useNavigate, useParams } from 'react-router-dom'
 import usePost from '../hooks/usePost'
 import toast from 'react-hot-toast'
 import { useAuth } from '../providers/AuthProvider'
+import useCart from '../hooks/useCart'
+import { FormEvent } from 'react'
 
 const Product = () => {
   const navigate = useNavigate()
   const { username } = useAuth()
   const { id } = useParams()
   const { Post, isLoading, deleteProduct } = usePost(id || '1')
+  const { useCartItem } = useCart()
 
   const handleDelete = async () => {
     try {
@@ -17,10 +20,18 @@ const Product = () => {
     } catch (err) {
       if (err instanceof Error) toast.error(err.message)
     }
-  }
 
   if (isLoading) return <h1>Loading...</h1>
 
+  const Click = (e: FormEvent) => {
+    e.preventDefault()
+    try {
+      useCartItem(Number(id))
+      navigate('/')
+    } catch (err) {
+      console.error(err)
+    }
+  }
   return (
     <>
       <div className="font-medium p-4 text-sm breadcrumbs">
@@ -82,6 +93,7 @@ const Product = () => {
                   <p className=" font-semibold text-xl text-zinc-950">{Post?.price} THB</p>
                 </div>
                 <div className="pb-10">
+
                   <button className="w-1/2 btn text-white bg-[#CF1CB6] border-[#CF1CB6] hover:bg-[#A3068D] hover:border-[#A3068D]">
                     Add to cart
                   </button>
@@ -102,7 +114,7 @@ const Product = () => {
                         </button>
                       </NavLink>
                     </div>
-                  )}
+
                 </div>
                 <div className="divider"></div>
                 <div className="pb-10">

@@ -1,4 +1,4 @@
-import CartRight from '../components/CartRight'
+import Cart from './Cart'
 
 const Checkout = () => {
   return (
@@ -400,7 +400,7 @@ const Checkout = () => {
         </div>
         {/* checkout right-side */}
         <div className="w-1/4 fixed top-22 right-20">
-          <CartRight />
+          <Cart />
         </div>
       </div>
     </div>

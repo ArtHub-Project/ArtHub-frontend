@@ -57,6 +57,7 @@ export interface CreateProductDTO {
   collection: string
 }
 
+
 export interface UpdateProductDTO {
   name: string | undefined
   imageUrl: string
@@ -64,4 +65,22 @@ export interface UpdateProductDTO {
   type: string
   collection: string
   price: number
+
+export interface ICartItemDTO {
+  productId: number
+}
+
+export interface CartItemDTO {
+  id: number
+  cartId: number
+  productId: number
+}
+
+export interface CartDTO {
+  id: number
+  total: number
+  createdAt: string
+  User: UserDTO
+  CartItem: CartItemDTO[]
+
 }
