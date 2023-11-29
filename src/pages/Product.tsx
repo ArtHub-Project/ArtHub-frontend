@@ -1,12 +1,25 @@
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import usePost from '../hooks/usePost'
+import useCart from '../hooks/useCart'
+import { FormEvent } from 'react'
 
 const Product = () => {
+  const navigate = useNavigate()
   const { id } = useParams()
   const { Post, isLoading } = usePost(id || '1')
+  const { useCartItem } = useCart()
 
   if (isLoading) return <h1>Loading...</h1>
 
+  const Click = (e: FormEvent) => {
+    e.preventDefault()
+    try {
+      useCartItem(Number(id))
+      navigate('/')
+    } catch (err) {
+      console.error(err)
+    }
+  }
   return (
     <>
       <div className="font-medium p-4 text-sm breadcrumbs">
@@ -66,7 +79,9 @@ const Product = () => {
                   <p className=" font-semibold text-xl">{Post?.price}</p>
                 </div>
                 <div className="pb-10">
-                  <button className="w-1/2 btn btn-error">Add to cart</button>
+                  <button className="w-1/2 btn btn-error" onClick={Click}>
+                    Add to cart
+                  </button>
                   <button className="w-1/2 btn btn-neutral">Make an offer</button>
                 </div>
                 <div className="divider"></div>

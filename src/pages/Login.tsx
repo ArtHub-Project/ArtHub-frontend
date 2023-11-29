@@ -2,19 +2,22 @@ import { NavLink, useNavigate } from 'react-router-dom'
 import { FormEvent, useState } from 'react'
 import { useAuth } from '../providers/AuthProvider'
 import toast from 'react-hot-toast'
+import useCart from '../hooks/useCart'
 
 const Login = () => {
   const { login } = useAuth()
   const navigate = useNavigate()
   const [username, setUsername] = useState<string>('')
   const [password, setPassword] = useState<string>('')
+  const { fetchCart } = useCart()
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
 
     try {
-      await login(username, password)
-      toast.success('Logged In Successfully !')
+      await login(username, password).then(async () => {
+        await toast.success('Logged In Successfully !'), fetchCart(0)
+      })
       navigate('/')
     } catch (err) {
       if (err instanceof Error) toast.error(err.message)
