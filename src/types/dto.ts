@@ -56,3 +56,21 @@ export interface CreateProductDTO {
   type: string
   collection: string
 }
+
+export interface ICartItemDTO {
+  productId: number
+}
+
+export interface CartItemDTO {
+  id: number
+  cartId: number
+  productId: number
+}
+
+export interface CartDTO {
+  id: number
+  total: number
+  createdAt: string
+  User: UserDTO
+  CartItem: CartItemDTO[]
+}

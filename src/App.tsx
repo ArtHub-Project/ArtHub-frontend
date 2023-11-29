@@ -26,7 +26,8 @@ function App() {
           <Route path="/register" element={<Register />} />
         </Route>
         <Route element={<GuardedRoute isRouteAccessible={isLoggedIn} redirectRoute="/" />}>
-          <Route path="/product" element={<Product />} />
+          <Route path="/product/:id" element={<Product />} />
+
           <Route path="/create" element={<Create />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/checkout" element={<Checkout />} />
