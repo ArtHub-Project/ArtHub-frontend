@@ -56,3 +56,12 @@ export interface CreateProductDTO {
   type: string
   collection: string
 }
+
+export interface UpdateProductDTO {
+  name: string | undefined
+  imageUrl: string
+  description: string
+  type: string
+  collection: string
+  price: number
+}

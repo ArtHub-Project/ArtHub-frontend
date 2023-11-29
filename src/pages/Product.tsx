@@ -1,4 +1,4 @@
-import { useNavigate, useParams } from 'react-router-dom'
+import { NavLink, useNavigate, useParams } from 'react-router-dom'
 import usePost from '../hooks/usePost'
 import toast from 'react-hot-toast'
 
@@ -92,6 +92,11 @@ const Product = () => {
                   >
                     Delete
                   </button>
+                  <NavLink to={`/edit/${id}`}>
+                    <button className="w-1/2 btn text-zinc-600 bg-slate-50 border-slate-50 hover:bg-slate-200 hover:border-slate-200">
+                      Edit
+                    </button>
+                  </NavLink>
                 </div>
                 <div className="divider"></div>
                 <div className="pb-10">
