@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom'
 import CartList from '../components/CartList'
+import useCart from '../hooks/useCart'
 
 const Cart = () => {
+  const { cart } = useCart()
   return (
     <div>
       <div className="w-full inline-flex items-center justify-center">
@@ -26,16 +28,17 @@ const Cart = () => {
               <p className="font-bold font text-[14px] text-zinc-950">Clear all</p>
             </div>
             <div>
-              <CartList />
-              <hr className="my-4 opacity-20 border border-zinc-400" />
-              <CartList />
+              {cart &&
+                cart.CartItem.map((cart) => {
+                  return <CartList key={cart.id} cartItem={cart} />
+                })}
             </div>
             {/* Subtotal */}
             <div className=" mt-8 p-4 m-auto w-full bg-slate-50 rounded-lg border ">
               <h6 className="text-sm font-bold font mb-2">Order summary</h6>
               <div className="flex justify-between">
                 <p className="text-gray-700">Subtotal</p>
-                <p className="text-zinc-950 font-bold ">฿ 1200</p>
+                <p className="text-zinc-950 font-bold ">฿ {cart?.total}</p>
               </div>
               <hr className="my-4 opacity-20 border border-zinc-400" />
               <div className="flex justify-between">
@@ -50,7 +53,7 @@ const Cart = () => {
               <hr className="my-4 opacity-20 border border-zinc-400" />
               <div className="flex justify-between">
                 <p className="text-gray-700">Order total</p>
-                <p className="text-zinc-950 font-bold">฿ 500,000,000</p>
+                <p className="text-zinc-950 font-bold">฿ {cart?.total}</p>
               </div>
               <Link to="/checkout">
                 <button className=" mt-4 btn btn-block  text-white bg-primary-50 border-primary-50 hover:bg-primary-80 hover:border-primary-80">

@@ -1,4 +1,10 @@
-const CartRight = () => {
+import { CartDTO } from '../types/dto'
+
+interface ICartProps {
+  cart: CartDTO
+}
+
+const CartRight = (cart: ICartProps) => {
   return (
     <>
       <div className="p-6 bg-white rounded-t-2xl shadow space-y-4 ">
@@ -19,7 +25,7 @@ const CartRight = () => {
         </div>
         <div className="flex justify-between">
           <p className="text-gray-700">Subtotal</p>
-          <p className="text-zinc-950 font-bold ">฿ 1200</p>
+          <p className="text-zinc-950 font-bold ">{cart.cart.total}</p>
         </div>
         <hr className="my-4 opacity-20 border border-zinc-400" />
         <div className="flex justify-between">
@@ -29,7 +35,7 @@ const CartRight = () => {
         <hr className="my-4 opacity-20 border border-zinc-400" />
         <div className="flex justify-between">
           <p className="text-gray-700 font-bold">Order total</p>
-          <p className="text-zinc-950 font-bold ">฿ 500,000,000</p>
+          <p className="text-zinc-950 font-bold ">{cart.cart.total}</p>
         </div>
       </div>
       {/* bottom */}
