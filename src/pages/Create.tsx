@@ -25,10 +25,9 @@ const Create = () => {
       await uploadBytes(imageRef, imageUpload).then(async () => {
         await getDownloadURL(imageRef).then(async (url) => {
           const imageUrl = url
-          console.log(imageUrl)
-          createProduct(name, imageUrl, description, price, type, collection),
-            console.log(name, imageUrl, description, price, type, collection)
-          navigate('/')
+          await createProduct(name, imageUrl, description, price, type, collection).then(() => {
+            navigate('/')
+          })
         })
       })
     } catch (err) {
