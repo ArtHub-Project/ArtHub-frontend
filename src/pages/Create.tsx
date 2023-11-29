@@ -3,6 +3,7 @@ import useCreate from '../hooks/useCreate'
 import { useNavigate } from 'react-router-dom'
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage'
 import { storage } from '../firebase/App'
+import { v4 } from 'uuid'
 
 const Create = () => {
   const navigate = useNavigate()
@@ -20,7 +21,7 @@ const Create = () => {
     if (imageUpload === null || imageUpload === undefined) throw Error
 
     try {
-      const imageRef = ref(storage, `images/${imageUpload.name}`)
+      const imageRef = ref(storage, `images/${imageUpload.name + v4()}`)
 
       await uploadBytes(imageRef, imageUpload).then(async () => {
         await getDownloadURL(imageRef).then(async (url) => {
@@ -70,14 +71,38 @@ const Create = () => {
                     Category <span className="text-[#CF1CB6]">*</span>
                   </span>
                 </label>
-                <input
-                  type="text"
-                  placeholder="Please Select "
-                  className="input input-bordered w-full bg-white focus:border-primary-50"
+
+                <select
+                  defaultValue={type}
+                  className="select select-bordered w-full bg-white focus:border-primary-50"
                   onChange={(e) => setType(e.target.value)}
                   required
-                />
+                >
+                  <option value={type} disabled selected>
+                    Types
+                  </option>
+                  <option value={'Painting'}>Painting</option>
+                  <option value={'Drawing'}>Drawing</option>
+                  <option value={'Photography'}>Photography</option>
+                  <option value={'Sculpture'}>Sculpture</option>
+                  <option value={'DigitalArt'}>Digital Art</option>
+                  <option value={'Other'}>Other</option>
+                </select>
               </div>
+
+              {/* <select
+          className="select select-bordered w-full max-w-xs"
+          defaultValue={newTypes}
+          onChange={(e) => setnewTypes(e.target.value)}
+          required
+        >
+          <option value={newTypes} disabled selected>
+            Types
+          </option>
+          <option value={'Coffee Beans'}>Coffee Beans</option>
+          <option value={'Equipments'}>Equipments</option>
+        </select> */}
+
               <div className="w-2/4">
                 <label className="label">
                   <span className="label-text text-zinc-950 text-sm font-bold ">
@@ -167,7 +192,7 @@ const Create = () => {
 
           <button
             type="submit"
-            className=" btn btn-block my-4  bg-[#CF1CB6] text-white bg-primary-50 border-primary-50 hover:bg-primary-80 hover:border-primary-80"
+            className=" btn btn-block my-4  text-white bg-[#CF1CB6] border-[#CF1CB6] hover:bg-[#A3068D] hover:border-[#A3068D]"
           >
             Create art sell
           </button>

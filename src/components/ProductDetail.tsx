@@ -7,10 +7,12 @@ interface IProductProps {
 
 export const ProductDetail = ({ product }: IProductProps) => {
   return (
-    <div className="card w-64 h-96 bg-slate-50 shadow-sm">
-      <Link to={`/product/${product.id}`}>
+    <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 justify-items-center p-10 gap-10 text-zinc-950">
+      <div className="card w-64 h-96 bg-slate-50 shadow-sm">
         <figure>
-          <img src={product.imageUrl} />
+          <Link to={`/product/${product.id}`}>
+            <img src={product.imageUrl} />
+          </Link>
         </figure>
         <div className="card-body">
           <p className="card-title">{product.name} </p>
@@ -21,7 +23,7 @@ export const ProductDetail = ({ product }: IProductProps) => {
             <div className="badge badge-outline">{product.type}</div>
           </div>
         </div>
-      </Link>
+      </div>
     </div>
   )
 }

@@ -37,7 +37,7 @@ export interface ProductDTO {
   collection: string
   createdAt: string
   updatedAt: string
-  postedBy: UserDTO
+  User: UserDTO
 }
 
 export type ProductsDTO = ProductDTO[]

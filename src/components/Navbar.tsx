@@ -34,7 +34,7 @@ const Navbar = () => {
           <div className="flex space-x-4">
             <Link to="/cart">
               <button className="btn bg-slate-50 hover:bg-fuchsia-100 border-hidden text-zinc-600" title="cart">
-                <img src="/images/shopping-cart.svg" />
+                <img src="/images/CartIcon.svg" />
                 Cart
               </button>
             </Link>
@@ -44,14 +44,14 @@ const Navbar = () => {
                 className="btn bg-slate-50 hover:bg-fuchsia-100 border-hidden text-zinc-600"
                 title="cart"
               >
-                <img src="/images/arrow-right-on-rectangle.svg" />
+                <img src="/images/LogoutIcon.svg" />
                 Logout
               </button>
             </div>
             <div>
               <Link to="/create">
                 <button className="btn bg-slate-50 hover:bg-fuchsia-100 border-hidden text-zinc-600">
-                  <img src="/images/Add2.svg" />
+                  <img src="/images/AddIcon.svg" />
                   Add
                 </button>
               </Link>
@@ -66,7 +66,7 @@ const Navbar = () => {
           <div className="space-x-4">
             <Link to="/login">
               <button className="btn bg-slate-50 hover:bg-fuchsia-100 border-hidden text-zinc-600">
-                <img src="/images/arrow-left-on-rectangle.svg" />
+                <img src="/images/LoginIcon.svg" />
                 Login
               </button>
             </Link>
@@ -75,7 +75,7 @@ const Navbar = () => {
                 className="btn bg-slate-50  hover:bg-fuchsia-100 border-hidden text-zinc-600"
                 title="profile/register"
               >
-                <img src="/images/user-circle.svg" />
+                <img src="/images/RegisterIcon.svg" />
                 Register
               </button>
             </Link>

@@ -24,7 +24,22 @@ const usePost = (id: string) => {
     fetchData()
   }, [id])
 
-  return { Post, isLoading }
+  const deleteProduct = async () => {
+    const token = localStorage.getItem('token')
+
+    try {
+      await axios.delete(`${API_HOST}/product/${id}`, {
+        headers: {
+          'Content-Type': 'application.json',
+          Authorization: `Bearer ${token}`,
+        },
+      })
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
+  return { Post, isLoading, deleteProduct }
 }
 
 export default usePost

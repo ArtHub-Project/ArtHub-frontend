@@ -61,7 +61,7 @@ const Login = () => {
             <button
               type="submit"
               value="login"
-              className=" btn btn-block mb-4  text-white bg-[#CF1CB6] border-[#CF1CB6] hover:bg-[#A3068D] hover:border-[#A3068D"
+              className=" btn btn-block mb-4  text-white bg-[#CF1CB6] border-[#CF1CB6] hover:bg-[#A3068D] hover:border-[#A3068D]"
             >
               Sign in
             </button>
