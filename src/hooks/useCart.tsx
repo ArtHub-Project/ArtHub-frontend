@@ -8,11 +8,9 @@ interface Total {
 }
 
 const useCart = () => {
-  const token = localStorage.getItem('token')
-
   const [cart, setCart] = useState<CartDTO | null>(null)
   const useGetCart = async () => {
-    console.log('1   ', token)
+    const token = localStorage.getItem('token')
 
     try {
       const res = await axios.get<CartDTO>(`${API_HOST}/cart`, {
@@ -27,6 +25,7 @@ const useCart = () => {
 
   const fetchCart = async (total: number) => {
     const token = localStorage.getItem('token')
+
     const totalBody: Total = { total }
     try {
       await axios.post<Total>(`${API_HOST}/cart`, totalBody, {
@@ -39,6 +38,8 @@ const useCart = () => {
   }
 
   const useCartItem = async (productId: number) => {
+    const token = localStorage.getItem('token')
+
     try {
       const CartItemBody: ICartItemDTO = { productId }
       await axios.post<CartItemDTO>(`${API_HOST}/cart/add`, CartItemBody, {

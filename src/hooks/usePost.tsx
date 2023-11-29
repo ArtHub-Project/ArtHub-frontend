@@ -12,8 +12,6 @@ const usePost = (id: string) => {
       setIsLoading(true)
       try {
         const res = await axios.get<ProductDTO>(`${API_HOST}/product/${id}`)
-        console.log(res)
-
         setPost(res.data)
       } catch (err) {
         console.error(err)
