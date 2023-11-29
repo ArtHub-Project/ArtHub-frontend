@@ -12,7 +12,7 @@ export interface ErrorDTO {
 
 export interface UserDTO {
   id: string
-  usename: string
+  username: string
   name: string
   registeredAt: string
 }

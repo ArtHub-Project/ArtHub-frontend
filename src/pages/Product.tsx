@@ -1,9 +1,11 @@
 import { NavLink, useNavigate, useParams } from 'react-router-dom'
 import usePost from '../hooks/usePost'
 import toast from 'react-hot-toast'
+import { useAuth } from '../providers/AuthProvider'
 
 const Product = () => {
   const navigate = useNavigate()
+  const { username } = useAuth()
   const { id } = useParams()
   const { Post, isLoading, deleteProduct } = usePost(id || '1')
 
@@ -86,17 +88,21 @@ const Product = () => {
                   <button className="w-1/2 btn text-zinc-600 bg-slate-50 border-slate-50 hover:bg-slate-200 hover:border-slate-200">
                     Make an offer
                   </button>
-                  <button
-                    onClick={handleDelete}
-                    className="w-1/2 btn text-zinc-600 bg-slate-50 border-slate-50 hover:bg-slate-200 hover:border-slate-200"
-                  >
-                    Delete
-                  </button>
-                  <NavLink to={`/edit/${id}`}>
-                    <button className="w-1/2 btn text-zinc-600 bg-slate-50 border-slate-50 hover:bg-slate-200 hover:border-slate-200">
-                      Edit
-                    </button>
-                  </NavLink>
+                  {username === Post.User.username && (
+                    <div>
+                      <button
+                        onClick={handleDelete}
+                        className="w-1/2 btn text-zinc-600 bg-slate-50 border-slate-50 hover:bg-slate-200 hover:border-slate-200"
+                      >
+                        Delete
+                      </button>
+                      <NavLink to={`/edit/${id}`}>
+                        <button className="w-1/2 btn text-zinc-600 bg-slate-50 border-slate-50 hover:bg-slate-200 hover:border-slate-200">
+                          Edit
+                        </button>
+                      </NavLink>
+                    </div>
+                  )}
                 </div>
                 <div className="divider"></div>
                 <div className="pb-10">
