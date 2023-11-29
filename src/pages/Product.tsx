@@ -1,13 +1,25 @@
-import { useNavigate, useParams } from 'react-router-dom'
+import { NavLink, useNavigate, useParams } from 'react-router-dom'
 import usePost from '../hooks/usePost'
+import toast from 'react-hot-toast'
+import { useAuth } from '../providers/AuthProvider'
 import useCart from '../hooks/useCart'
 import { FormEvent } from 'react'
 
 const Product = () => {
   const navigate = useNavigate()
+  const { username } = useAuth()
   const { id } = useParams()
-  const { Post, isLoading } = usePost(id || '1')
+  const { Post, isLoading, deleteProduct } = usePost(id || '1')
   const { useCartItem } = useCart()
+
+  const handleDelete = async () => {
+    try {
+      await deleteProduct()
+      toast.success('Product has been deleted!')
+      navigate('/')
+    } catch (err) {
+      if (err instanceof Error) toast.error(err.message)
+    }
 
   if (isLoading) return <h1>Loading...</h1>
 
@@ -46,9 +58,8 @@ const Product = () => {
               <div className="w-1/2 px-5">
                 <div className="pb-10">
                   <div className="">
-                    <p className=" font-semibold text-2xl">{Post?.name}</p>
+                    <p className=" font-semibold text-2xl text-zinc-950">{Post?.name}</p>
                   </div>
-                  {/* <div className="flex flex-col justify-between"> */}
                   <div className="flex pt-6">
                     <div className="pr-4">
                       <button className="btn btn-neutral" title="favorite">
@@ -63,37 +74,82 @@ const Product = () => {
                   </div>
                 </div>
 
-                <div className="avatar flex justify-between">
-                  <div className="w-10 rounded-full">
-                    <img src="/images/Mockup4.jpg" />
+                <div className="flex justify-between">
+                  <div className="">
+                    <p className="text-zinc-600">Owner:</p>
+                    <p className="text-zinc-950">{Post?.User.name}</p>
                   </div>
-                  <div className="w-10 rounded-full">
-                    <img src="/images/Mockup4.jpg" />
+                  <div className="">
+                    <p className="text-zinc-600">Type:</p>
+                    <p className="text-zinc-950">{Post?.type}</p>
                   </div>
-                  <div className="w-10 rounded-full">
-                    <img src="/images/Mockup4.jpg" />
+                  <div className="">
+                    <p className="text-zinc-600">Collection:</p>
+                    <p className="text-zinc-950">{Post?.collection}</p>
                   </div>
                 </div>
                 <div className="divider"></div>
                 <div className="pb-10">
-                  <p className=" font-semibold text-xl">{Post?.price}</p>
+                  <p className=" font-semibold text-xl text-zinc-950">{Post?.price} THB</p>
                 </div>
                 <div className="pb-10">
-                  <button className="w-1/2 btn btn-error" onClick={Click}>
+
+                  <button className="w-1/2 btn text-white bg-[#CF1CB6] border-[#CF1CB6] hover:bg-[#A3068D] hover:border-[#A3068D]">
                     Add to cart
                   </button>
-                  <button className="w-1/2 btn btn-neutral">Make an offer</button>
+                  <button className="w-1/2 btn text-zinc-600 bg-slate-50 border-slate-50 hover:bg-slate-200 hover:border-slate-200">
+                    Make an offer
+                  </button>
+                  {username === Post.User.username && (
+                    <div>
+                      <button
+                        onClick={handleDelete}
+                        className="w-1/2 btn text-zinc-600 bg-slate-50 border-slate-50 hover:bg-slate-200 hover:border-slate-200"
+                      >
+                        Delete
+                      </button>
+                      <NavLink to={`/edit/${id}`}>
+                        <button className="w-1/2 btn text-zinc-600 bg-slate-50 border-slate-50 hover:bg-slate-200 hover:border-slate-200">
+                          Edit
+                        </button>
+                      </NavLink>
+                    </div>
+
                 </div>
                 <div className="divider"></div>
                 <div className="pb-10">
-                  <p className=" font-semibold text-xl">Description</p>
-                  <p>{Post?.description}</p>
+                  <p className=" font-semibold text-xl text-zinc-950">Description</p>
+                  <p className="text-zinc-600">{Post?.description}</p>
                 </div>
-                <p className=" font-semibold text-xl">More information</p>
-                <p>
-                  - Size: 108 W * 72 L * 2 H (Centimeter) - Oil Painting - Including Pre-Plan Document - With the
-                  Premium gold box
-                </p>
+                <div className="flex space-x-10 text-center text-xs pt-8">
+                  <div className="rounded-lg border w-full p-2">
+                    <div className="flex justify-center pt-2">
+                      <img src="/images/ShieldIcon.svg" />
+                    </div>
+                    <div className="pt-2 pb-2">
+                      <p className="text-sm text-zinc-950 font-bold pb-2">100%</p>
+                      <p className="text-zinc-600">Secure Transaction</p>
+                    </div>
+                  </div>
+                  <div className="rounded-lg border w-full p-2">
+                    <div className="flex justify-center pt-2">
+                      <img src="/images/LocationIcon.svg" />
+                    </div>
+                    <div className="pt-2 pb-2">
+                      <p className="text-sm text-zinc-950 font-bold pb-2">Worldwide Delivery</p>
+                      <p className="text-zinc-600">Receive within 7 days</p>
+                    </div>
+                  </div>
+                  <div className="rounded-lg border w-full p-2">
+                    <div className="flex justify-center pt-2">
+                      <img src="/images/CartIcon.svg" />
+                    </div>
+                    <div className="pt-2 pb-2">
+                      <p className="text-sm text-zinc-950 font-bold pb-2">Free Shipping</p>
+                      <p className="text-zinc-600">For Order with 200,000 THB</p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </>
           )}

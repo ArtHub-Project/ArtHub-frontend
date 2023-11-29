@@ -1,44 +1,56 @@
-import { FormEvent, useState } from 'react'
-import useCreate from '../hooks/useCreate'
-import { useNavigate } from 'react-router-dom'
-import { getDownloadURL, ref, uploadBytes } from 'firebase/storage'
-import { storage } from '../firebase/App'
-import { v4 } from 'uuid'
+import { useNavigate, useParams } from 'react-router-dom'
+import usePost from '../hooks/usePost'
 
-const Create = () => {
+import { FormEvent, useEffect, useState } from 'react'
+import toast from 'react-hot-toast'
+import Loading from '../components/Loading'
+
+const Edit = () => {
+  const { id } = useParams()
+  const { Post, isLoading, editProduct } = usePost(id || '1')
   const navigate = useNavigate()
-  const { createProduct } = useCreate()
-  const [name, setName] = useState<string>('')
+  const [name, setName] = useState<string>()
   const [description, setDescription] = useState<string>('')
   const [price, setPrice] = useState<number>(0)
   const [type, setType] = useState<string>('')
   const [collection, setCollection] = useState<string>('')
+  const [imageUrl, setImageUrl] = useState<string>('')
 
-  const [imageUpload, setImageUpload] = useState<File>()
+  useEffect(() => {
+    if (Post) {
+      setName(Post.name)
+      setDescription(Post.description)
+      setPrice(Post.price)
+      setType(Post.type)
+      setCollection(Post.collection)
+      setImageUrl(Post.imageUrl)
+    }
+  }, [Post])
 
-  const handleSubmit = async (e: FormEvent) => {
+  const handleEdit = async (e: FormEvent) => {
     e.preventDefault()
-    if (imageUpload === null || imageUpload === undefined) throw Error
-
     try {
-      const imageRef = ref(storage, `images/${imageUpload.name + v4()}`)
-
-      await uploadBytes(imageRef, imageUpload).then(async () => {
-        await getDownloadURL(imageRef).then(async (url) => {
-          const imageUrl = url
-          await createProduct(name, imageUrl, description, price, type, collection).then(() => {
-            navigate('/')
-          })
-        })
+      await editProduct({
+        name,
+        description,
+        price,
+        type,
+        collection,
+        imageUrl,
       })
+
+      toast.success('Successfully Edited!')
+      navigate(`/product/${id}`)
     } catch (err) {
-      console.error(err)
+      if (err instanceof Error) toast.error(err.message)
     }
   }
 
+  if (isLoading || !Post) return <Loading />
+
   return (
     <div>
-      <form className="w-full inline-flex items-center m-auto justify-center" onSubmit={handleSubmit}>
+      <form className="w-full inline-flex items-center m-auto justify-center" onSubmit={handleEdit}>
         <div className="place-items-center ">
           <div className="w-[736px] inline-flex gap-7 my-4 item-end">
             <img className="mr-2 w-[166.80px]" src="/images/ArtHubLogo.svg" alt="" />
@@ -149,10 +161,10 @@ const Create = () => {
             <div className="form-control w-full mb-4">
               <label className="text-sm font-bold">Feature Image</label>
               <input
+                defaultValue={imageUrl}
                 type="file"
                 className="file-input file-input-bordered mt-1 mb-4"
-                onChange={(e) => setImageUpload(e.target.files?.[0])}
-                required
+                onChange={(e) => setImageUrl(e.target.value)}
               />
               <p>* Recommend size 4:7 - 256 H * 373 W in Pixel</p>
             </div>
@@ -179,7 +191,7 @@ const Create = () => {
             type="submit"
             className=" btn btn-block my-4  text-white bg-[#CF1CB6] border-[#CF1CB6] hover:bg-[#A3068D] hover:border-[#A3068D]"
           >
-            Create art sell
+            Edited
           </button>
         </div>
       </form>
@@ -187,4 +199,31 @@ const Create = () => {
   )
 }
 
-export default Create
+export default Edit
+// <form onSubmit={handleEdit} className="flex flex-col gap-6 max-w-lg bg-gray-100 rounded-xl mx-auto my-14 py-5 px-7">
+//   <h1 className="font-bold text-3xl text-orange-500 text-center">Edit</h1>
+//   <div className="flex flex-col gap-2">
+//     <label>Name:</label>
+//     <input className="p-3 rounded" type="text" value={name} onChange={(e) => setName(e.target.value)} required />
+//   </div>
+//   <div className="flex flex-col gap-2">
+//     <label>Price:</label>
+//     <input className="p-3 rounded" type="number" value={price} onChange={(e) => setName(e.target.value)} required />
+//   </div>
+//   <div className="flex flex-col gap-2">
+//     <label>Type:</label>
+//     <input className="p-3 rounded" type="text" value={type} onChange={(e) => setName(e.target.value)} required />
+//   </div>
+//   <div className="flex flex-col gap-2">
+//     <label>Collection:</label>
+//     <input
+//       className="p-3 rounded"
+//       type="text"
+//       value={collection}
+//       onChange={(e) => setName(e.target.value)}
+//       required
+//     />
+//   </div>
+
+//   <button className="bg-orange-500 p-3 rounded-lg text-white hover:bg-orange-600">Edit</button>
+// </form>

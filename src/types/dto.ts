@@ -12,7 +12,7 @@ export interface ErrorDTO {
 
 export interface UserDTO {
   id: string
-  usename: string
+  username: string
   name: string
   registeredAt: string
 }
@@ -37,7 +37,7 @@ export interface ProductDTO {
   collection: string
   createdAt: string
   updatedAt: string
-  postedBy: UserDTO
+  User: UserDTO
 }
 
 export type ProductsDTO = ProductDTO[]
@@ -57,6 +57,15 @@ export interface CreateProductDTO {
   collection: string
 }
 
+
+export interface UpdateProductDTO {
+  name: string | undefined
+  imageUrl: string
+  description: string
+  type: string
+  collection: string
+  price: number
+
 export interface ICartItemDTO {
   productId: number
 }
@@ -73,4 +82,5 @@ export interface CartDTO {
   createdAt: string
   User: UserDTO
   CartItem: CartItemDTO[]
+
 }

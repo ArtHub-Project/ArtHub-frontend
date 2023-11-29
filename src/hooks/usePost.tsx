@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
-import axios from 'axios'
-import { ProductDTO } from '../types/dto'
+import axios, { AxiosError } from 'axios'
+import { ProductDTO, UpdateProductDTO } from '../types/dto'
 import { API_HOST } from '../const'
 
 const usePost = (id: string) => {
@@ -22,7 +22,37 @@ const usePost = (id: string) => {
     fetchData()
   }, [id])
 
-  return { Post, isLoading }
+  const editProduct = async (updateBody: UpdateProductDTO) => {
+    const token = localStorage.getItem('token')
+
+    try {
+      await axios.patch(`${API_HOST}/product/${id}`, updateBody, {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+      })
+    } catch (err) {
+      if (err instanceof AxiosError) throw new Error(err.response?.data.message)
+    }
+  }
+
+  const deleteProduct = async () => {
+    const token = localStorage.getItem('token')
+
+    try {
+      await axios.delete(`${API_HOST}/product/${id}`, {
+        headers: {
+          'Content-Type': 'application.json',
+          Authorization: `Bearer ${token}`,
+        },
+      })
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
+  return { Post, isLoading, deleteProduct, editProduct }
 }
 
 export default usePost
