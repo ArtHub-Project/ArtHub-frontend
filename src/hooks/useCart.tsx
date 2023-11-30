@@ -9,6 +9,7 @@ interface Total {
 
 const useCart = () => {
   const [cart, setCart] = useState<CartDTO | null>(null)
+  const [isLoading, setIsLoading] = useState<boolean>(false)
 
   useEffect(() => {
     const useGetCart = async () => {
@@ -56,6 +57,7 @@ const useCart = () => {
 
   const useCartItemDelete = async (id: string) => {
     const token = localStorage.getItem('token')
+    setIsLoading(true)
     try {
       await axios.delete(`${API_HOST}/cart/delete/${id}`, {
         headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
@@ -63,10 +65,11 @@ const useCart = () => {
     } catch (err) {
       console.error(err)
     } finally {
+      setIsLoading(false)
     }
   }
 
-  return { useCartItem, cart, fetchCart, useCartItemDelete }
+  return { useCartItem, cart, fetchCart, useCartItemDelete, isLoading }
 }
 
 export default useCart

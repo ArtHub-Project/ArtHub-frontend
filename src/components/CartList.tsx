@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom'
 import useCart from '../hooks/useCart'
 import usePost from '../hooks/usePost'
 import { CartItemDTO } from '../types/dto'
@@ -10,12 +9,15 @@ interface ICartProps {
 
 const CartList = (cart: ICartProps) => {
   const { Post } = usePost(cart.cartItem.productId.toString())
-  const { useCartItemDelete } = useCart()
+  const { useCartItemDelete, isLoading } = useCart()
 
   const handleRemove = (e: FormEvent) => {
     e.preventDefault()
     useCartItemDelete(cart.cartItem.id.toString())
   }
+
+  if (isLoading) return <h1>Loading...</h1>
+
   return (
     <div className="card flex justify-between h-1/4 w-1/4">
       <div className="flex">
