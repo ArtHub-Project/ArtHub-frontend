@@ -3,7 +3,10 @@ import CartList from '../components/CartList'
 import useCart from '../hooks/useCart'
 
 const Cart = () => {
-  const { cart } = useCart()
+  const { cart, isLoading, useCartItemDelete } = useCart()
+
+  if (isLoading) return <h1>Loading...</h1>
+
   return (
     <div>
       <div className="w-full inline-flex items-center justify-center">
@@ -24,13 +27,13 @@ const Cart = () => {
               <hr className="opacity-20 border border-zinc-400" />
             </div>
             <div className="w-full mt-4 mb-2 inline-flex justify-between m-auto">
-              <h6 className="font-bold font text-[14px] text-zinc-950">1 items</h6>
+              <h6 className="font-bold font text-[14px] text-zinc-950">{cart?.CartItem.length} items</h6>
               <p className="font-bold font text-[14px] text-zinc-950">Clear all</p>
             </div>
             <div>
               {cart &&
                 cart.CartItem.map((cart) => {
-                  return <CartList key={cart.id} cartItem={cart} />
+                  return <CartList key={cart.id} cartItem={cart} useCartItemDelete={useCartItemDelete} />
                 })}
             </div>
             {/* Subtotal */}

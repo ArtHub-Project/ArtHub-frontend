@@ -1,22 +1,23 @@
-import useCart from '../hooks/useCart'
 import usePost from '../hooks/usePost'
 import { CartItemDTO } from '../types/dto'
 import { FormEvent } from 'react'
 
 interface ICartProps {
   cartItem: CartItemDTO
+  useCartItemDelete: (id: string) => Promise<void>
 }
 
 const CartList = (cart: ICartProps) => {
   const { Post } = usePost(cart.cartItem.productId.toString())
-  const { useCartItemDelete, isLoading } = useCart()
 
-  const handleRemove = (e: FormEvent) => {
+  const handleRemove = async (e: FormEvent) => {
     e.preventDefault()
-    useCartItemDelete(cart.cartItem.id.toString())
+    try {
+      await cart.useCartItemDelete(cart.cartItem.id.toString())
+    } catch (err) {
+      console.error(err)
+    }
   }
-
-  if (isLoading) return <h1>Loading...</h1>
 
   return (
     <div className="card flex justify-between h-1/4 w-1/4">
