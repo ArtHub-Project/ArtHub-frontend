@@ -9,38 +9,26 @@ const CartList = (cart: ICartProps) => {
   const { Post } = usePost(cart.cartItem.productId.toString())
 
   return (
-    <div className="card flex justify-between h-1/4 w-1/4">
-      <div className="flex">
+    <div className="grid grid-cols-4 gap-12 p-5">
+      <div className="h-[100px] w-[100px]">
+        <img className="w-full h-full rounded-md object-cover" src={Post?.imageUrl} alt="" />
+      </div>
+      <div>
+        <h2 className="text-zinc-950 text-left text-base font-bold mb-2">{Post?.name}</h2>
+        <p className="text-zinc-600 text-left text-sm ">{Post?.type}</p>
+      </div>
+      <div className="">
         <div>
-          <figure>
-            <img className="rounded-lg" src={Post?.imageUrl} alt="" />
-          </figure>
+          <select className="select select-bordered w-full text-center bg-white focus:border-primary-50">
+            <option>1</option>
+          </select>
         </div>
-        <div className="card-body">
-          <div>
-            <h2 className="w-[229px] text-zinc-950 text-base font-[16px] mb-2">{Post?.name}</h2>
-            <p className="text-zinc-600 text-base font-normal">{Post?.type}</p>
-          </div>
-          <div>
-            <span className="cursor-pointer rounded-l bg-gray-100 py-1 px-3.5 duration-100 hover:text-primary-80">
-              {' '}
-              -{' '}
-            </span>
-            <input
-              className="h-8 w-10 border-none bg-white text-center text-xs outline-none font-bold"
-              type="text"
-              value="1"
-            />
-            <span className="cursor-pointer rounded-r bg-gray-100 py-1 px-3 duration-100 hover:text-primary-80 mb-4">
-              {' '}
-              +{' '}
-            </span>
-            <p className="mt-2 text-center text-primary-50 hover:text-primary-80">Remove</p>
-          </div>
-          <div>
-            <p className="text-zinc-950 text-base font-bold">{Post?.price}</p>
-          </div>
+        <div>
+          <p className="mt-2 text-center text-primary-50 hover:text-primary-80">Remove</p>
         </div>
+      </div>
+      <div>
+        <p className="text-zinc-950 text-right text-base font-bold">฿ {Post?.price}</p>
       </div>
     </div>
   )

@@ -15,11 +15,15 @@ export const ProductDetail = ({ product }: IProductProps) => {
       </figure>
       <div className="card-body">
         <p className="card-title">{product.name} </p>
-        <p>{product.description}</p>
         <p>{product.price} ฿</p>
         <div className="card-actions card-normal justify-end">
-          <div className="badge text-white bg-slate-600 border-slate-600">{product.collection}</div>
-          <div className="badge text-white bg-[#CF1CB6] border-[#CF1CB6]">{product.type}</div>
+          <div>
+            <p>{product.User.name}</p>
+          </div>
+          <div className="space-x-2">
+            <div className="badge text-white bg-slate-600 border-slate-600">{product.collection}</div>
+            <div className="badge text-white bg-[#CF1CB6] border-[#CF1CB6]">{product.type}</div>
+          </div>
         </div>
       </div>
     </div>

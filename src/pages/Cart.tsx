@@ -5,17 +5,12 @@ import useCart from '../hooks/useCart'
 const Cart = () => {
   const { cart } = useCart()
   return (
-    <div>
-      <div className="w-full inline-flex items-center justify-center">
+    <div className="flex justify-center">
+      <div className="w-3/5 p-10">
         <div className="place-items-center ">
           <div className="flex items-center gap-7 my-4 item-end">
-            <div>
-              <Link to="/" className="w-1/2">
-                <img src="/images/ArtHubLogo.svg" />
-              </Link>
-            </div>
             <div className="w-5/6">
-              <p className="text-[32px] font-bold">Cart</p>
+              <p className="text-3xl text-zinc-950 font-bold">Cart</p>
             </div>
           </div>
           <div className="p-6 bg-white rounded-2xl shadow w-full h-auto ">
@@ -33,7 +28,7 @@ const Cart = () => {
                   return <CartList key={cart.id} cartItem={cart} />
                 })}
             </div>
-            {/* Subtotal */}
+
             <div className=" mt-8 p-4 m-auto w-full bg-slate-50 rounded-lg border ">
               <h6 className="text-sm font-bold font mb-2">Order summary</h6>
               <div className="flex justify-between">
