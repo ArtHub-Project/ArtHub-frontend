@@ -1,5 +1,8 @@
+import { Link } from 'react-router-dom'
+import useCart from '../hooks/useCart'
 import usePost from '../hooks/usePost'
 import { CartItemDTO } from '../types/dto'
+import { FormEvent } from 'react'
 
 interface ICartProps {
   cartItem: CartItemDTO
@@ -7,7 +10,12 @@ interface ICartProps {
 
 const CartList = (cart: ICartProps) => {
   const { Post } = usePost(cart.cartItem.productId.toString())
+  const { useCartItemDelete } = useCart()
 
+  const handleRemove = (e: FormEvent) => {
+    e.preventDefault()
+    useCartItemDelete(cart.cartItem.id.toString())
+  }
   return (
     <div className="card flex justify-between h-1/4 w-1/4">
       <div className="flex">
@@ -35,7 +43,9 @@ const CartList = (cart: ICartProps) => {
               {' '}
               +{' '}
             </span>
-            <p className="mt-2 text-center text-primary-50 hover:text-primary-80">Remove</p>
+            <a className="mt-2 text-center text-primary-50 hover:shadow-black text-red-500" onClick={handleRemove}>
+              Remove
+            </a>
           </div>
           <div>
             <p className="text-zinc-950 text-base font-bold">{Post?.price}</p>

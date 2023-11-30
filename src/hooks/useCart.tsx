@@ -54,7 +54,19 @@ const useCart = () => {
     }
   }
 
-  return { useCartItem, cart, fetchCart }
+  const useCartItemDelete = async (id: string) => {
+    const token = localStorage.getItem('token')
+    try {
+      await axios.delete(`${API_HOST}/cart/delete/${id}`, {
+        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+      })
+    } catch (err) {
+      console.error(err)
+    } finally {
+    }
+  }
+
+  return { useCartItem, cart, fetchCart, useCartItemDelete }
 }
 
 export default useCart
