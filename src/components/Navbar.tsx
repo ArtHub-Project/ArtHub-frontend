@@ -32,12 +32,18 @@ const Navbar = () => {
       <div className="space-x-4">
         {isLoggedIn ? (
           <div className="flex space-x-4">
-            <Link to="/cart">
-              <button className="btn bg-slate-50 hover:bg-fuchsia-100 border-hidden text-zinc-600" title="cart">
-                <img src="/images/CartIcon.svg" />
-                Cart
-              </button>
-            </Link>
+            <div className="static">
+              <Link to="/cart">
+                <button
+                  className="btn relative bg-slate-50 hover:bg-fuchsia-100 border-hidden text-zinc-600"
+                  title="cart"
+                >
+                  <img src="/images/CartIcon.svg" />
+                  Cart
+                  <p className="absolute top-0 right-0 w-4 h-4 rounded-xl bg-[#CF1CB6] text-white text-xs">2</p>
+                </button>
+              </Link>
+            </div>
             <div>
               <button
                 onClick={handleSubmit}
