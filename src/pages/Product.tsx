@@ -20,10 +20,11 @@ const Product = () => {
     } catch (err) {
       if (err instanceof Error) toast.error(err.message)
     }
+  }
 
   if (isLoading) return <h1>Loading...</h1>
 
-  const Click = (e: FormEvent) => {
+  const handleAddItem = (e: FormEvent) => {
     e.preventDefault()
     try {
       useCartItem(Number(id))
@@ -32,6 +33,7 @@ const Product = () => {
       console.error(err)
     }
   }
+
   return (
     <>
       <div className="font-medium p-4 text-sm breadcrumbs">
@@ -62,13 +64,19 @@ const Product = () => {
                   </div>
                   <div className="flex pt-6">
                     <div className="pr-4">
-                      <button className="btn btn-neutral" title="favorite">
-                        <img src="/images/Favorite Icon.svg" className="w-4 h-4" />
+                      <button
+                        className="btn bg-slate-100 border-slate-100 hover:bg-slate-200 hover:border-slate-200"
+                        title="favorite"
+                      >
+                        <img src="/images/HeartIcon.svg" className="w-4 h-4" />
                       </button>
                     </div>
                     <div>
-                      <button className="btn btn-neutral" title="share">
-                        <img src="/images/Share Icon.svg" className="w-4 h-4" />
+                      <button
+                        className="btn bg-slate-100 border-slate-100 hover:bg-slate-200 hover:border-slate-200"
+                        title="share"
+                      >
+                        <img src="/images/ShareIcon.svg" className="w-4 h-4" />
                       </button>
                     </div>
                   </div>
@@ -89,32 +97,40 @@ const Product = () => {
                   </div>
                 </div>
                 <div className="divider"></div>
-                <div className="pb-10">
-                  <p className=" font-semibold text-xl text-zinc-950">{Post?.price} THB</p>
+                <div className="pb-10 text-center">
+                  <p className="font-semibold text-2xl text-zinc-950">{Post?.price} ฿</p>
                 </div>
                 <div className="pb-10">
-
-                  <button className="w-1/2 btn text-white bg-[#CF1CB6] border-[#CF1CB6] hover:bg-[#A3068D] hover:border-[#A3068D]">
-                    Add to cart
-                  </button>
-                  <button className="w-1/2 btn text-zinc-600 bg-slate-50 border-slate-50 hover:bg-slate-200 hover:border-slate-200">
-                    Make an offer
-                  </button>
+                  <div className="">
+                    <div className="flex justify-center gap-10">
+                      <button
+                        onClick={handleAddItem}
+                        className="w-1/4 btn text-white bg-[#CF1CB6] border-[#CF1CB6] hover:bg-[#A3068D] hover:border-[#A3068D]"
+                      >
+                        Add to cart
+                      </button>
+                      <button className="w-1/4 btn text-zinc-600 bg-slate-100 border-slate-100 hover:bg-slate-200 hover:border-slate-200">
+                        Make an offer
+                      </button>
+                    </div>
+                  </div>
                   {username === Post.User.username && (
                     <div>
-                      <button
-                        onClick={handleDelete}
-                        className="w-1/2 btn text-zinc-600 bg-slate-50 border-slate-50 hover:bg-slate-200 hover:border-slate-200"
-                      >
-                        Delete
-                      </button>
-                      <NavLink to={`/edit/${id}`}>
-                        <button className="w-1/2 btn text-zinc-600 bg-slate-50 border-slate-50 hover:bg-slate-200 hover:border-slate-200">
-                          Edit
+                      <div className="flex justify-center gap-10">
+                        <button
+                          onClick={handleDelete}
+                          className="w-1/4 btn text-zinc-600 bg-slate-100 border-slate-100 hover:bg-slate-200 hover:border-slate-200"
+                        >
+                          Delete
                         </button>
-                      </NavLink>
+                        <div className="w-1/4 btn text-zinc-600 bg-slate-100 border-slate-100 hover:bg-slate-200 hover:border-slate-200">
+                          <NavLink to={`/edit/${id}`}>
+                            <button>Edit</button>
+                          </NavLink>
+                        </div>
+                      </div>
                     </div>
-
+                  )}
                 </div>
                 <div className="divider"></div>
                 <div className="pb-10">
