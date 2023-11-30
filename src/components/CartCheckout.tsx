@@ -2,23 +2,19 @@ import { Link } from 'react-router-dom'
 import CartList from '../components/CartList'
 import useCart from '../hooks/useCart'
 
-const Cart = () => {
+const CartCheckout = () => {
   const { cart, isLoading, useCartItemDelete } = useCart()
 
   if (isLoading) return <h1>Loading...</h1>
 
   return (
     <div className="flex justify-center">
-      <div className="w-3/5 pt-4 pb-10 ">
+      <div className="w-full pt-4 pb-10 ">
         <div className="place-items-center ">
-          <div className="flex items-center gap-7 my-4 item-end">
-            <div className="w-5/6">
-              <p className="text-3xl text-zinc-950 font-bold">Cart</p>
-            </div>
-          </div>
+          <div className="flex items-center gap-7 my-4 item-end"></div>
           <div className="p-6 bg-white rounded-2xl shadow w-full h-auto ">
             <div>
-              <p className="text-[24px] font-bold text-black mb-2">Your Cart</p>
+              <p className="text-[24px] font-bold mb-2">Your Cart</p>
               <hr className="opacity-20 border border-zinc-400" />
             </div>
             <div className="w-full mt-4 mb-2 inline-flex justify-between m-auto">
@@ -66,4 +62,4 @@ const Cart = () => {
   )
 }
 
-export default Cart
+export default CartCheckout
