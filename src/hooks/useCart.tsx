@@ -76,7 +76,26 @@ const useCart = () => {
     }
   }
 
-  return { useCartItem, cart, fetchCart, useCartItemDelete, isLoading }
+  const useCartItemClear = async () => {
+    const token = localStorage.getItem('token')
+    setIsLoading(true)
+    try {
+      await axios.delete(`${API_HOST}/cart/delete`, {
+        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+      })
+
+      const res = await axios.get<CartDTO>(`${API_HOST}/cart`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      setCart(res.data)
+    } catch (err) {
+      console.error(err)
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
+  return { useCartItemClear, useCartItem, cart, fetchCart, useCartItemDelete, isLoading }
 }
 
 export default useCart
