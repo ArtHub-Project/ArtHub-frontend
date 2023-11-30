@@ -35,9 +35,9 @@ const CartList = (cart: ICartProps) => {
           </select>
         </div>
         <div>
-            <a className="mt-2 text-center text-primary-50 hover:shadow-black text-red-500" onClick={handleRemove}>
-              Remove
-            </a>
+          <a className="mt-2 text-center text-primary-50 hover:shadow-black text-red-500" onClick={handleRemove}>
+            Remove
+          </a>
         </div>
       </div>
       <div>
