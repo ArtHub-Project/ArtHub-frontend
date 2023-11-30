@@ -1,12 +1,23 @@
 import usePost from '../hooks/usePost'
 import { CartItemDTO } from '../types/dto'
+import { FormEvent } from 'react'
 
 interface ICartProps {
   cartItem: CartItemDTO
+  useCartItemDelete: (id: string) => Promise<void>
 }
 
 const CartList = (cart: ICartProps) => {
   const { Post } = usePost(cart.cartItem.productId.toString())
+
+  const handleRemove = async (e: FormEvent) => {
+    e.preventDefault()
+    try {
+      await cart.useCartItemDelete(cart.cartItem.id.toString())
+    } catch (err) {
+      console.error(err)
+    }
+  }
 
   return (
     <div className="grid grid-cols-4 gap-12 p-5">
@@ -24,7 +35,9 @@ const CartList = (cart: ICartProps) => {
           </select>
         </div>
         <div>
-          <p className="mt-2 text-center text-primary-50 hover:text-primary-80">Remove</p>
+            <a className="mt-2 text-center text-primary-50 hover:shadow-black text-red-500" onClick={handleRemove}>
+              Remove
+            </a>
         </div>
       </div>
       <div>
