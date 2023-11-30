@@ -1,7 +1,17 @@
+import toast from 'react-hot-toast'
 import CartCheckout from '../components/CartCheckout'
-// import Cart from './Cart'
+import { FormEvent } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const Checkout = () => {
+  const navigate = useNavigate()
+
+  const handleBuyNow = (e: FormEvent) => {
+    e.preventDefault()
+    toast.success('Successfully!')
+    navigate('/')
+  }
+
   return (
     <div className="w-full container mx-30 pt-6  m-auto  flex">
       {/* Heading */}
@@ -389,7 +399,10 @@ const Checkout = () => {
                 <img src="/images/CardSet.svg" alt="" />
               </div>
             </div>
-            <button className=" btn btn-block mb-4 text-white bg-[#CF1CB6] border-[#CF1CB6] hover:bg-[#A3068D] hover:border-[#A3068D]">
+            <button
+              onClick={handleBuyNow}
+              className=" btn btn-block mb-4 text-white bg-[#CF1CB6] border-[#CF1CB6] hover:bg-[#A3068D] hover:border-[#A3068D]"
+            >
               Buy now
             </button>
             <div>

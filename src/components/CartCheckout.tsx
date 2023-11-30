@@ -1,6 +1,5 @@
-import { Link } from 'react-router-dom'
-import CartList from '../components/CartList'
 import useCart from '../hooks/useCart'
+import CardListCheckout from './CartListCheckout'
 
 const CartCheckout = () => {
   const { cart, isLoading, useCartItemDelete } = useCart()
@@ -14,7 +13,7 @@ const CartCheckout = () => {
           <div className="flex items-center gap-7 my-4 item-end"></div>
           <div className="p-6 bg-white rounded-2xl shadow w-full h-auto ">
             <div>
-              <p className="text-[24px] font-bold mb-2">Your Cart</p>
+              <p className="text-[24px] text-black font-bold mb-2">Your Cart</p>
               <hr className="opacity-20 border border-zinc-400" />
             </div>
             <div className="w-full mt-4 mb-2 inline-flex justify-between m-auto">
@@ -24,7 +23,7 @@ const CartCheckout = () => {
             <div>
               {cart &&
                 cart.CartItem.map((cart) => {
-                  return <CartList key={cart.id} cartItem={cart} useCartItemDelete={useCartItemDelete} />
+                  return <CardListCheckout key={cart.id} cartItem={cart} useCartItemDelete={useCartItemDelete} />
                 })}
             </div>
 
@@ -49,11 +48,6 @@ const CartCheckout = () => {
                 <p className="text-gray-700">Order total</p>
                 <p className="text-zinc-950 font-bold">฿ {cart?.total}</p>
               </div>
-              <Link to="/checkout">
-                <button className=" mt-4 btn btn-block  text-white bg-[#CF1CB6] border-[#CF1CB6] hover:bg-[#A3068D] hover:border-[#A3068D]">
-                  <p>Checkout</p>
-                </button>
-              </Link>
             </div>
           </div>
         </div>
