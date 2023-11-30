@@ -14,6 +14,7 @@ const CartList = (cart: ICartProps) => {
     e.preventDefault()
     try {
       await cart.useCartItemDelete(cart.cartItem.id.toString())
+      location.reload()
     } catch (err) {
       console.error(err)
     }
@@ -35,9 +36,12 @@ const CartList = (cart: ICartProps) => {
           </select>
         </div>
         <div>
-          <a className="mt-2 text-center text-primary-50 hover:shadow-black text-red-500" onClick={handleRemove}>
+          <p
+            className="mt-2 text-center text-primary-50 hover:shadow-black cursor-pointer text-[#CF1CB6]"
+            onClick={handleRemove}
+          >
             Remove
-          </a>
+          </p>
         </div>
       </div>
       <div>

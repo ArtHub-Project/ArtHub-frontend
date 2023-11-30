@@ -34,7 +34,7 @@ const Login = () => {
         <div className="p-12 flex flex-col justify-normal">
           <form>
             <h2 className="text-zinc-900 text-[32px] font-bold">Welcome back</h2>
-            <h6 className="text-zinc-400 text-base font-normal mb-4">Welcome back! please enter your account</h6>
+            <h6 className="text-zinc-400 text-base font-normal mb-4">Welcome back! Please enter your account</h6>
             <div className="form-control w-full  mb-4">
               <label className="label">
                 <span className="label-text text-zinc-950 text-sm font-bold ">Username</span>
