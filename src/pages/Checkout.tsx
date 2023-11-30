@@ -8,14 +8,7 @@ const Checkout = () => {
 
   const handleBuyNow = async (e: FormEvent) => {
     e.preventDefault()
-    await useCartItemClear().then(() => 
-    toast('Your first order has been placed! 🫶🏻', {
-      style: {
-        borderRadius: '20px',
-        background: '#CF1CB6',
-        color: 'white',
-      },
-    })
+    await useCartItemClear().then(() => toast.success('Your first order has been placed! 🫶🏻'))
 
     location.assign(`https://arthub.cleverse.academy/`)
   }
