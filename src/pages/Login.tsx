@@ -16,7 +16,14 @@ const Login = () => {
 
     try {
       await login(username, password).then(async () => {
-        await toast.success('Logged In Successfully !'), fetchCart(0)
+        await toast('Welcome to ArtHub! 😜', {
+          style: {
+            borderRadius: '20px',
+            background: '#CF1CB6',
+            color: 'white',
+          },
+        }),
+          fetchCart(0)
       })
       navigate('/')
     } catch (err) {

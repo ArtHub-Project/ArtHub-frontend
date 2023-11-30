@@ -39,7 +39,13 @@ const Edit = () => {
         imageUrl,
       })
 
-      toast.success('Successfully Edited!')
+      toast('Edit Successful! 🫡', {
+        style: {
+          borderRadius: '20px',
+          background: '#CF1CB6',
+          color: 'white',
+        },
+      })
       navigate(`/product/${id}`)
     } catch (err) {
       if (err instanceof Error) toast.error(err.message)
@@ -200,30 +206,3 @@ const Edit = () => {
 }
 
 export default Edit
-// <form onSubmit={handleEdit} className="flex flex-col gap-6 max-w-lg bg-gray-100 rounded-xl mx-auto my-14 py-5 px-7">
-//   <h1 className="font-bold text-3xl text-orange-500 text-center">Edit</h1>
-//   <div className="flex flex-col gap-2">
-//     <label>Name:</label>
-//     <input className="p-3 rounded" type="text" value={name} onChange={(e) => setName(e.target.value)} required />
-//   </div>
-//   <div className="flex flex-col gap-2">
-//     <label>Price:</label>
-//     <input className="p-3 rounded" type="number" value={price} onChange={(e) => setName(e.target.value)} required />
-//   </div>
-//   <div className="flex flex-col gap-2">
-//     <label>Type:</label>
-//     <input className="p-3 rounded" type="text" value={type} onChange={(e) => setName(e.target.value)} required />
-//   </div>
-//   <div className="flex flex-col gap-2">
-//     <label>Collection:</label>
-//     <input
-//       className="p-3 rounded"
-//       type="text"
-//       value={collection}
-//       onChange={(e) => setName(e.target.value)}
-//       required
-//     />
-//   </div>
-
-//   <button className="bg-orange-500 p-3 rounded-lg text-white hover:bg-orange-600">Edit</button>
-// </form>

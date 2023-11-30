@@ -25,7 +25,13 @@ const Register = () => {
       }
 
       await register(newUsername, newPassword, newName)
-      toast.success('Registered Successfully!')
+      toast('Register Successful! 😘', {
+        style: {
+          borderRadius: '20px',
+          background: '#CF1CB6',
+          color: 'white',
+        },
+      })
 
       navigate('/login')
     } catch (err) {
@@ -49,7 +55,7 @@ const Register = () => {
               </label>
               <input
                 type="text"
-                placeholder="Fisrtname Lastname"
+                placeholder="Fisrt Name Last Name"
                 className="input input-bordered w-full bg-white focus:border-[#CF1CB6]"
                 onChange={(e) => {
                   setNewName(e.target.value)
