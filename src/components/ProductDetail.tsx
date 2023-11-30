@@ -10,7 +10,7 @@ export const ProductDetail = ({ product }: IProductProps) => {
     <div className="card w-64 bg-slate-50 shadow-sm">
       <figure className="h-2/3">
         <Link className="h-full" to={`/product/${product.id}`}>
-          <img className="h-full object-cover" src={product.imageUrl} />
+          <img className="h-full w-full object-cover" src={product.imageUrl} />
         </Link>
       </figure>
 
