@@ -10,7 +10,7 @@ const Product = () => {
   const { username } = useAuth()
   const { id } = useParams()
   const { Post, isLoading, deleteProduct } = usePost(id || '1')
-  const { useCartItem } = useCart()
+  const { cart, useCartItem } = useCart()
 
   const handleDelete = async () => {
     try {
@@ -27,8 +27,11 @@ const Product = () => {
   const handleAddItem = (e: FormEvent) => {
     e.preventDefault()
     try {
+      if (cart?.CartItem.filter((word) => word.productId === Number(id)).length !== 0)
+        return toast.error('Every art has only 1 stock! ')
       useCartItem(Number(id))
       navigate('/')
+      location.reload()
     } catch (err) {
       console.error(err)
     }

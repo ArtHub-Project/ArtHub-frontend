@@ -1,9 +1,11 @@
 import { Link } from 'react-router-dom'
 import { useAuth } from '../providers/AuthProvider'
 import toast from 'react-hot-toast'
+import useCart from '../hooks/useCart'
 
 const Navbar = () => {
   const { isLoggedIn, logout } = useAuth()
+  const { cart } = useCart()
 
   const handleSubmit = () => {
     logout()
@@ -40,7 +42,15 @@ const Navbar = () => {
                 >
                   <img src="/images/CartIcon.svg" />
                   Cart
-                  <p className="absolute top-0 right-0 w-4 h-4 rounded-xl bg-[#CF1CB6] text-white text-xs">2</p>
+                  <p className="absolute top-0 right-0 w-4 h-4 rounded-xl bg-[#CF1CB6] text-white text-xs">
+                    {cart?.CartItem.length !== 0 ? (
+                      <p className="absolute top-0 right-0 w-4 h-4 rounded-xl bg-[#CF1CB6] text-white text-xs">
+                        {cart?.CartItem.length}
+                      </p>
+                    ) : (
+                      ''
+                    )}
+                  </p>
                 </button>
               </Link>
             </div>

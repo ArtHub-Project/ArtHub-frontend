@@ -14,6 +14,7 @@ const CartList = (cart: ICartProps) => {
     e.preventDefault()
     try {
       await cart.useCartItemDelete(cart.cartItem.id.toString())
+      location.reload()
     } catch (err) {
       console.error(err)
     }
