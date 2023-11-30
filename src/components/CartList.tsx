@@ -35,9 +35,12 @@ const CartList = (cart: ICartProps) => {
           </select>
         </div>
         <div>
-            <a className="mt-2 text-center text-primary-50 hover:shadow-black text-red-500" onClick={handleRemove}>
-              Remove
-            </a>
+          <p
+            className="mt-2 text-center text-primary-50 hover:shadow-black cursor-pointer text-[#CF1CB6]"
+            onClick={handleRemove}
+          >
+            Remove
+          </p>
         </div>
       </div>
       <div>

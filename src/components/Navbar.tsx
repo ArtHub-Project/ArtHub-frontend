@@ -11,7 +11,7 @@ const Navbar = () => {
   }
 
   return (
-    <nav className="navbar bg-white p-4 sticky top-0 z-50 shadow m-auto">
+    <nav className="navbar bg-white p-6 sticky top-0 z-50 shadow m-auto">
       <Link to="/">
         <img src="/images/ArtHubLogo.svg" />
       </Link>
@@ -64,7 +64,7 @@ const Navbar = () => {
             </div>
             <div className="avatar">
               <div className="w-12 rounded-3xl">
-                <img src="/images/sunturs/suntur1.jpeg" />
+                <img src="/images/ProfileIcon.svg" />
               </div>
             </div>
           </div>

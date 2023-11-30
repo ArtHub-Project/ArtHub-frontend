@@ -16,6 +16,8 @@ import Edit from './pages/Edit'
 function App() {
   const { isLoggedIn } = useAuth()
 
+  console.log(isLoggedIn)
+
   return (
     <>
       <Navbar />
