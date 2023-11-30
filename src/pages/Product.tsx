@@ -102,33 +102,33 @@ const Product = () => {
                   </div>
                 </div>
                 <div className="divider"></div>
-                <div className="pb-10 text-center">
+                <div className="pb-10 text-left">
                   <p className="font-semibold text-2xl text-zinc-950">{Post?.price} ฿</p>
                 </div>
                 <div className="pb-10">
                   <div className="">
-                    <div className="flex justify-center gap-10">
+                    <div className="flex justify-center gap-10 px-5 pb-5">
                       <button
                         onClick={handleAddItem}
-                        className="w-1/4 btn text-white bg-[#CF1CB6] border-[#CF1CB6] hover:bg-[#A3068D] hover:border-[#A3068D]"
+                        className="w-2/4 btn text-white bg-[#CF1CB6] border-[#CF1CB6] hover:bg-[#A3068D] hover:border-[#A3068D]"
                       >
                         Add to cart
                       </button>
-                      <button className="w-1/4 btn text-zinc-600 bg-slate-100 border-slate-100 hover:bg-slate-200 hover:border-slate-200">
+                      <button className="w-2/4 btn text-zinc-600 bg-slate-100 border-slate-100 hover:bg-slate-200 hover:border-slate-200">
                         Make an offer
                       </button>
                     </div>
                   </div>
                   {username === Post.User.username && (
                     <div>
-                      <div className="flex justify-center gap-10">
+                      <div className="flex justify-center gap-10 px-5">
                         <button
                           onClick={handleDelete}
-                          className="w-1/4 btn text-zinc-600 bg-slate-100 border-slate-100 hover:bg-slate-200 hover:border-slate-200"
+                          className="w-2/4 btn text-zinc-600 bg-slate-100 border-slate-100 hover:bg-slate-200 hover:border-slate-200"
                         >
                           Delete
                         </button>
-                        <div className="w-1/4 btn text-zinc-600 bg-slate-100 border-slate-100 hover:bg-slate-200 hover:border-slate-200">
+                        <div className="w-2/4 btn text-zinc-600 bg-slate-100 border-slate-100 hover:bg-slate-200 hover:border-slate-200">
                           <NavLink to={`/edit/${id}`}>
                             <button>Edit</button>
                           </NavLink>

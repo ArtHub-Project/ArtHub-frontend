@@ -69,8 +69,9 @@ const Login = () => {
               Sign in
             </button>
             <p className="text-zinc-950 text-sm font-normal text-center">
+              Don't have an account?
               <NavLink to="/register" className=" text-[#CF1CB6] hover:text-[#A3068D] ">
-                {`Don't have an account? Register`}
+                {` Register`}
               </NavLink>
             </p>
           </form>

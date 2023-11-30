@@ -104,8 +104,9 @@ const Register = () => {
             </button>
             <div className="space-y-0">
               <p className="text-zinc-950 text-sm font-normal text-center mb-16px">
+                Have an account?
                 <NavLink to="/login" className=" text-[#CF1CB6] hover:text-[#A3068D]">
-                  {`Have an account?`}
+                  {` Sign In`}
                 </NavLink>
               </p>
               <p className=" my-4 text-zinc-950 text-sm font-normal text-center">
