@@ -15,7 +15,13 @@ const Product = () => {
   const handleDelete = async () => {
     try {
       await deleteProduct()
-      toast.success('Product has been deleted!')
+      toast('Product has been deleted! 😭', {
+        style: {
+          borderRadius: '20px',
+          background: '#CF1CB6',
+          color: 'white',
+        },
+      })
       navigate('/')
     } catch (err) {
       if (err instanceof Error) toast.error(err.message)
@@ -57,7 +63,7 @@ const Product = () => {
           {Post && (
             <>
               <div className="w-1/2">
-                <div className="h-full">
+                <div className="skeleton h-full">
                   <img className=" h-full object-cover rounded-2xl" src={Post.imageUrl} />
                 </div>
               </div>

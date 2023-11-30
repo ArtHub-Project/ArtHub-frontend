@@ -13,7 +13,7 @@ const Cart = () => {
         <div className="place-items-center ">
           <div className="flex items-center gap-7 my-4 item-end">
             <div className="w-5/6">
-              <p className="text-3xl text-zinc-950 font-bold">Cart</p>
+              <p className="text-2xl text-zinc-950 font-bold">Cart</p>
             </div>
           </div>
           <div className="p-6 bg-white rounded-2xl shadow w-full h-auto ">

@@ -9,7 +9,13 @@ const Navbar = () => {
 
   const handleSubmit = () => {
     logout()
-    toast.success('Logout Success')
+    toast('Logout Successful! 🥲', {
+      style: {
+        borderRadius: '20px',
+        background: '#CF1CB6',
+        color: 'white',
+      },
+    })
   }
 
   return (
@@ -40,7 +46,8 @@ const Navbar = () => {
                   className="btn relative bg-slate-50 hover:bg-fuchsia-100 border-hidden text-zinc-600"
                   title="cart"
                 >
-                  <img src="/images/CartIcon.svg" />
+                  {/* <img src="/images/CartIcon.svg" /> */}
+                  <img src="/images/ShoppingCartHome.svg" />
                   Cart
                   {cart?.CartItem.length !== 0 ? (
                     <p className="absolute top-0 right-0 w-4 h-4 rounded-xl bg-[#CF1CB6] text-white text-xs">
@@ -58,14 +65,16 @@ const Navbar = () => {
                 className="btn bg-slate-50 hover:bg-fuchsia-100 border-hidden text-zinc-600"
                 title="cart"
               >
-                <img src="/images/LogoutIcon.svg" />
+                {/* <img src="/images/LogoutIcon.svg" /> */}
+                <img src="/images/LogoutHome.svg" />
                 Logout
               </button>
             </div>
             <div>
               <Link to="/create">
                 <button className="btn bg-slate-50 hover:bg-fuchsia-100 border-hidden text-zinc-600">
-                  <img src="/images/AddIcon.svg" />
+                  {/* <img src="/images/AddIcon.svg" /> */}
+                  <img src="/images/AddHome.svg" />
                   Add
                 </button>
               </Link>
@@ -80,7 +89,8 @@ const Navbar = () => {
           <div className="space-x-4">
             <Link to="/login">
               <button className="btn bg-slate-50 hover:bg-fuchsia-100 border-hidden text-zinc-600">
-                <img src="/images/LoginIcon.svg" />
+                {/* <img src="/images/LoginIcon.svg" /> */}
+                <img src="/images/LoginHome.svg" />
                 Login
               </button>
             </Link>
@@ -89,7 +99,8 @@ const Navbar = () => {
                 className="btn bg-slate-50  hover:bg-fuchsia-100 border-hidden text-zinc-600"
                 title="profile/register"
               >
-                <img src="/images/RegisterIcon.svg" />
+                {/* <img src="/images/RegisterIcon.svg" /> */}
+                <img src="/images/RegisterHome.svg" />
                 Register
               </button>
             </Link>

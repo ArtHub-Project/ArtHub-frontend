@@ -8,13 +8,20 @@ const Checkout = () => {
 
   const handleBuyNow = async (e: FormEvent) => {
     e.preventDefault()
-    await useCartItemClear().then(() => toast.success('Successfully!'))
+    await useCartItemClear().then(() => 
+    toast('Your first order has been placed! 🫶🏻', {
+      style: {
+        borderRadius: '20px',
+        background: '#CF1CB6',
+        color: 'white',
+      },
+    })
 
     location.assign(`https://arthub.cleverse.academy/`)
   }
 
   return (
-    <div className="w-full container mx-30 pt-6  m-auto  flex">
+    <div className="w-full container mx-30 pt-6 pb-6 m-auto  flex">
       {/* Heading */}
       <div className="w-2/3">
         <div className="inline-flex gap-7 my-4 item-end justify-start ">
@@ -69,7 +76,7 @@ const Checkout = () => {
                   />
                 </div>
                 <div className="w-1/4">
-                  <button className=" btn btn-block   text-white bg-primary-50 border-primary-50 hover:bg-primary-80 hover:border-primary-80">
+                  <button className=" btn btn-block   text-white bg-[#CF1CB6] border-[#CF1CB6] hover:bg-[#A3068D] hover:border-[#A3068D]">
                     Apply
                   </button>
                 </div>

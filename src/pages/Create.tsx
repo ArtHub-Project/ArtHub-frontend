@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage'
 import { storage } from '../firebase/App'
 import { v4 } from 'uuid'
+import toast from 'react-hot-toast'
 
 const Create = () => {
   const navigate = useNavigate()
@@ -27,6 +28,13 @@ const Create = () => {
         await getDownloadURL(imageRef).then(async (url) => {
           const imageUrl = url
           await createProduct(name, imageUrl, description, price, type, collection).then(() => {
+            toast('Selling Successful! 🤝🏻', {
+              style: {
+                borderRadius: '20px',
+                background: '#CF1CB6',
+                color: 'white',
+              },
+            })
             navigate('/')
           })
         })
@@ -179,7 +187,7 @@ const Create = () => {
             type="submit"
             className=" btn btn-block my-4  text-white bg-[#CF1CB6] border-[#CF1CB6] hover:bg-[#A3068D] hover:border-[#A3068D]"
           >
-            Create art sell
+            Start Selling
           </button>
         </div>
       </form>
