@@ -9,7 +9,7 @@ const Cart = () => {
 
   return (
     <div className="flex justify-center">
-      <div className="w-3/5 p-10">
+      <div className="w-3/5 pt-4 pb-10 ">
         <div className="place-items-center ">
           <div className="flex items-center gap-7 my-4 item-end">
             <div className="w-5/6">
@@ -54,7 +54,7 @@ const Cart = () => {
                 <p className="text-zinc-950 font-bold">฿ {cart?.total}</p>
               </div>
               <Link to="/checkout">
-                <button className=" mt-4 btn btn-block  text-white bg-primary-50 border-primary-50 hover:bg-primary-80 hover:border-primary-80">
+                <button className=" mt-4 btn btn-block  text-white bg-[#CF1CB6] border-[#CF1CB6] hover:bg-[#A3068D] hover:border-[#A3068D]">
                   <p>Checkout</p>
                 </button>
               </Link>

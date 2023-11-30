@@ -46,7 +46,7 @@ const checkLoginStatus = async (token: string | null): Promise<boolean> => {
 
 const AuthProvider = ({ children }: IAuthProviderProps) => {
   const navigate = useNavigate()
-  const [isLoggedIn, setIsLoggedin] = useState<boolean>(false)
+  const [isLoggedIn, setIsLoggedin] = useState<boolean>(!!token)
   const [username, setUsername] = useState<string | null>(user)
 
   useEffect(() => {

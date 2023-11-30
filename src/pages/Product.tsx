@@ -36,7 +36,7 @@ const Product = () => {
 
   return (
     <>
-      <div className="font-medium p-4 text-sm breadcrumbs">
+      <div className="font-medium px-6 py-4 text-sm breadcrumbs">
         <ul>
           <li>
             <a>Home</a>
@@ -49,12 +49,14 @@ const Product = () => {
           </li>
         </ul>
       </div>
-      <div className="w-full flex p-12">
+      <div className="w-full flex p-6 space-x-10">
         <>
           {Post && (
             <>
-              <div className="w-1/2 px-5">
-                <img src={Post.imageUrl} />
+              <div className="w-1/2">
+                <div className="h-full">
+                  <img className=" h-full object-cover rounded-2xl" src={Post.imageUrl} />
+                </div>
               </div>
 
               <div className="w-1/2 px-5">

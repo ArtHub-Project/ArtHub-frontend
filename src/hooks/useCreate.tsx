@@ -3,7 +3,6 @@ import axios from 'axios'
 import { CreateProductDTO } from '../types/dto'
 import { API_HOST } from '../const'
 
-const token = localStorage.getItem('token')
 const useCreate = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false)
 
@@ -16,6 +15,7 @@ const useCreate = () => {
     collection: string,
   ) => {
     setIsLoading(true)
+    const token = localStorage.getItem('token')
     const CreateProductBody: CreateProductDTO = { name, imageUrl, description, price, type, collection }
     try {
       await axios.post<CreateProductDTO>(`${API_HOST}/product`, CreateProductBody, {
