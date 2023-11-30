@@ -1,15 +1,16 @@
 import toast from 'react-hot-toast'
 import CartCheckout from '../components/CartCheckout'
 import { FormEvent } from 'react'
-import { useNavigate } from 'react-router-dom'
+import useCart from '../hooks/useCart'
 
 const Checkout = () => {
-  const navigate = useNavigate()
+  const { useCartItemClear } = useCart()
 
-  const handleBuyNow = (e: FormEvent) => {
+  const handleBuyNow = async (e: FormEvent) => {
     e.preventDefault()
-    toast.success('Successfully!')
-    navigate('/')
+    await useCartItemClear().then(() => toast.success('Successfully!'))
+
+    location.assign(`https://arthub.cleverse.academy/`)
   }
 
   return (

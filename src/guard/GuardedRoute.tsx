@@ -5,9 +5,7 @@ interface IGuardedRouteProps {
   redirectRoute: string
 }
 
-const GuardedRoute = (props: IGuardedRouteProps) => {
-  const { isRouteAccessible, redirectRoute } = props
+const GuardedRoute = ({ isRouteAccessible, redirectRoute }: IGuardedRouteProps) => {
   return isRouteAccessible ? <Outlet /> : <Navigate to={redirectRoute} replace />
 }
-
 export default GuardedRoute
